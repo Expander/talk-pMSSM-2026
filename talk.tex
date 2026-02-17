@@ -1,0 +1,830 @@
+\documentclass[hyperref={pdfpagelabels=false},ngerman]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx,import}
+\usepackage{amsmath,amssymb,amstext,amsfonts} % mathrsfs
+\usepackage{array,booktabs,tabularx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,calc,arrows,positioning}
+\tikzstyle{block} = [rectangle, draw, text width=10em, text centered, minimum height=2em]
+\tikzstyle{arrow} = [draw, -latex, thick]
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{pifont}
+\usepackage{xspace}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue}
+
+\definecolor{darkgreen}{RGB}{0,176,0}
+\definecolor{darkred}{RGB}{200,0,0}
+\definecolor{darkyellow}{RGB}{255,165,0}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\fmfvcenter}[1]{\;\vcenter{\hbox{\fmfreuse{#1}}}\;}
+\newcommand{\eh}[1]{\,\mathsf{#1}}
+\newcommand{\ok}{\textcolor{darkgreen}{\cmark}}
+\newcommand{\notok}{\textcolor{red}{\xmark}}
+\newcommand{\maybe}{\textcolor{gray}{\cmark}}
+\newcommand{\meh}{\textcolor{gray}{\textbf{\huge\lower.1em\hbox{-}}}}
+\newcommand{\Lagr}{\mathcal{L}}
+\newcommand{\MS}{\ensuremath{M_S}}
+\newcommand{\mathi}{\mathsf{i}}
+\newcommand{\mycite}[1]{\ensuremath{\text{\textcolor{darkgray}{\tiny [#1]}}}}
+\newcommand{\bigcite}[1]{\textcolor{darkgray}{[#1]}}
+\newcommand{\dimrep}[1]{\mathbf{#1}}
+\newcommand{\dimrepadj}[1]{\mathbf{\overline{#1}}}
+\newcommand{\ESSM}{E\textsubscript{6}SSM}
+\newcommand{\CESSM}{CE\textsubscript{6}SSM}
+\DeclareMathOperator{\tildeRe}{\widetilde Re}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\renewcommand{\emph}[1]{\textbf{\textcolor{darkblue}{#1}}}
+\newcommand{\dd}{\text{d}}
+\newcommand{\myurl}[1]{\href{#1}{#1}}
+\newcommand{\Superpot}{\mathcal{W}}
+\newcommand{\SuperField}[1]{#1}
+\newcommand{\ConjSuperField}[1]{\bar{#1}}
+\newcommand{\UY}{\ensuremath{U(1)_{Y}}}
+\newcommand{\UN}{\ensuremath{U(1)_{N}}}
+\newcommand{\Uem}{\ensuremath{U(1)_\text{em}}}
+\newcommand{\SUL}{\ensuremath{SU(2)_\text{L}}}
+\newcommand{\SUc}{\ensuremath{SU(3)_\text{c}}}
+\newcommand{\SOten}{\ensuremath{{SO(10)}}}
+\newcommand{\comma}{,}
+\newcommand{\DRbar}{\ensuremath{\overline{\text{DR}}}}
+\newcommand{\DRbarp}{\ensuremath{\overline{\text{DR}}'}}
+\newcommand{\MSbar}{\ensuremath{\overline{\text{MS}}}}
+\newcommand{\SM}{\ensuremath{\text{SM}}}
+\newcommand{\MSSM}{\ensuremath{\text{MSSM}}}
+\newcommand{\BSM}{\ensuremath{\text{BSM}}}
+\newcommand{\EFT}{\ensuremath{\text{EFT}}\xspace}
+\newcommand{\THDM}{\ensuremath{\text{2HDM}}\xspace}
+\newcommand{\pole}{\ensuremath{\text{pole}}}
+\newcommand{\tree}{\ensuremath{\text{tree}}}
+\newcommand{\fsstar}{\textbf{*}}
+\newcommand{\FS}{\texttt{FlexibleSUSY}\xspace}
+\newcommand{\fsh}{\texttt{FS+H}\xspace}
+\newcommand{\feft}{\texttt{FlexibleEFTHiggs}\xspace}
+\newcommand{\hssusy}{\texttt{HSSUSY}\xspace}
+\newcommand{\Himalaya}{\texttt{Himalaya}\xspace}
+\newcommand{\FH}{\texttt{FeynHiggs}\xspace}
+\newcommand{\SPheno}{\texttt{SPheno}\xspace}
+\newcommand{\SARAH}{\texttt{SARAH}\xspace}
+\newcommand{\SOFTSUSY}{\texttt{SOFTSUSY}\xspace}
+\newcommand{\Zv}{\ensuremath{\backslash\mkern-11.0mu{Z_3}}}
+\newcommand{\downrightknickarrow}{\mathrel{\scalebox{1.3}{\rotatebox[origin=c]{180}{$\Lsh$}}}}
+\newcommand{\threelinebrace}{$\left. \begin{array}{c} \\ \\ \\ \end{array} \right\rbrace$}
+\newcommand{\fivelinebrace}{$\left. \begin{array}{c} \\ \\ \\ \\ \\ \end{array} \right\rbrace$}
+\newcommand{\twolinebrace}{$\left. \begin{array}{c} \\ \\ \end{array} \right\rbrace$}
+\newcommand{\elevenlinebrace}{$\left. \begin{array}{c} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \end{array} \right\rbrace$}
+\newcommand{\at}{\alpha_t}
+\newcommand{\ab}{\alpha_b}
+\newcommand{\atau}{\alpha_\tau}
+\newcommand{\as}{\alpha_s}
+\newcommand{\aem}{\alpha_\text{em}}
+\newcommand{\GeV}{\eh{GeV}}
+\newcommand{\TeV}{\eh{TeV}}
+\newcommand{\SQCD}{\ensuremath{\scalefont{.8}\text{SQCD}}}
+\newcommand{\Qpole}{\ensuremath{Q_\text{pole}}}
+\newcommand{\Qmatch}{\ensuremath{Q_\text{match}}}
+\newcommand{\Qsplit}{\ensuremath{Q_\text{split}}\xspace}
+\newcommand{\QTHDM}{\ensuremath{Q_\text{\THDM}}\xspace}
+\newcommand{\DMh}{\ensuremath{\Delta M_h}}
+\newcommand{\DMhFO}{\ensuremath{\Delta M_h^{(\text{FO})}}}
+\newcommand{\DMhEFT}{\ensuremath{\Delta M_h^{(\text{EFT})}}}
+\newcommand{\Mathematica}{\texttt{Mathematica}}
+\newcommand{\ord}{\ensuremath{\mathcal{O}}}
+\def\HSSUSY{\texttt{HSSUSY}}
+
+% set look of slides
+\usetheme{Madrid}
+\useoutertheme{default}
+\useinnertheme{circles}
+\usecolortheme{default}
+\beamertemplatenavigationsymbolsempty % keine Navigationselemente
+\setbeamersize{text margin left = 1cm, text margin right = 1cm}
+
+% define footer
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \hfill\hbox{\insertframenumber{} / \inserttotalframenumber\hspace*{4pt}}%
+  \vskip3pt%
+}
+\makeatother
+\usecolortheme{tud}
+
+\title{Status of the $M_h$ prediction in the MSSM with FlexibleSUSY}
+
+\author[Alexander Voigt]{Alexander Voigt}
+
+\date{pMSSM topic meeting\\[1em] ??/??/2026}
+
+% \institute[Aachen]{RWTH Aachen}
+\subject{MSSM,Higgs,Supersymmetrie,EFT}
+\keywords{MSSM,Higgs,Supersymmetrie,EFT}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+  \tikz [remember picture,overlay]
+  \node[anchor=south east] at
+    ([yshift=0.5cm,xshift=-0.5cm]current page.south east)
+    {\includegraphics[width=4cm]{images/RWTH_Logo.pdf}};
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Contents}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{FlexibleSUSY}
+  \begin{center}
+    \begin{tikzpicture}
+      \node[inner sep=0pt] (FS) at (0,0) {\includegraphics[width=.8\textwidth]{images/FS.png}};
+      \draw[latex-,thick] ([xshift=-3cm,yshift=0cm] FS.east) to[out=0,in=270] ++(2cm,1cm) node [above,yshift=0.5em] {\textbf{FlexibleSUSY}};
+    \end{tikzpicture}
+  \end{center}
+
+  \bigskip
+
+  Manuals:
+  \href{https://arxiv.org/abs/1406.2319}{[1406.2319]},
+  \href{https://arxiv.org/abs/1710.03760}{[1710.03760]}
+
+  \medskip
+
+  Download:
+  \href{https://flexiblesusy.hepforge.org}{flexiblesusy.hepforge.org},
+  \href{https://github.com/FlexibleSUSY/FlexibleSUSY}{github.com/FlexibleSUSY}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{obsblock}[1]{%
+  \setbeamercolor{block body}{bg=darkgreen!10}
+  \setbeamercolor{block title}{bg=darkgreen}
+  \begin{block}{#1}}{\end{block}}
+
+\newenvironment{precblock}[1]{%
+  \setbeamercolor{block body}{bg=darkred!10}
+  \setbeamercolor{block title}{bg=darkred}
+  \begin{block}{#1}}{\end{block}}
+
+\newenvironment{flexblock}[1]{%
+  \setbeamercolor{block body}{bg=blue!10}
+  \setbeamercolor{block title}{bg=blue}
+  \begin{block}{#1}}{\end{block}}
+
+\newenvironment{speedblock}[1]{%
+  \setbeamercolor{block body}{bg=black!10}
+  \setbeamercolor{block title}{bg=black}
+  \begin{block}{#1}}{\end{block}}
+
+\begin{frame}{Features for all models (SUSY and non-SUSY)}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \begin{obsblock}{Observables}
+        $M_h$, $M_W$, BSM masses, $(g-2)_\mu$, EDMs,\\
+        $h\rightarrow\gamma\gamma$, $h\rightarrow gg$
+      \end{obsblock}
+      \begin{flexblock}{Flexibility}
+        multipe BVP solvers, user-defined BCs,\\ modular C++ code, \\
+        SLHA input/output, \Mathematica\ input/output, SQLite output
+      \end{flexblock}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{precblock}{High precision}
+        2L RGEs + 1L self energies (via \SARAH) + 1L thresholds,\\
+        NLL resummation for $M_h$ (\texttt{FlexibleEFTHiggs})
+      \end{precblock}
+      \begin{speedblock}{High speed}
+        multi-threading,\\ self-optimizing linear algebra,\\ lazy evaluation
+      \end{speedblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{modelblock}[1]{%
+  \setbeamercolor{block body}{bg=darkyellow!15}
+  \setbeamercolor{block title}{fg=black,bg=darkyellow}
+  \begin{block}{#1}}{\end{block}}
+
+\begin{frame}{Additional model-specific precision corrections}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \begin{modelblock}{MSSM}
+        3L RGEs, 3L $M_h$, 2L $M_{H,A,H^\pm}$, 2L $(g-2)_\mu$, 2L
+        thresholds
+      \end{modelblock}
+      \begin{modelblock}{NMSSM}
+        2L $M_h$, 2L $M_{H,A,H^\pm}$, 2L thresholds
+      \end{modelblock}
+      \begin{modelblock}{Split-MSSM}
+        3L $M_h$, 2L thresholds for $y_t$, 2L thresholds for $\lambda$, $\tilde{g}_{ip}$
+        the MSSM
+      \end{modelblock}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{modelblock}{SM}
+        4L RGEs, 4L $M_h$, 4L thresholds for $\as$, $y_t$, 3L
+        thresholds for $\lambda$ to the MSSM (\texttt{HSSUSY})
+      \end{modelblock}
+      \begin{modelblock}{THDM-II}
+        2L thresholds for $\lambda_i$ to the MSSM
+      \end{modelblock}
+      \begin{modelblock}{THDM-II + $\tilde{h}$ + $\tilde{g}$}
+        1L thresholds for $\lambda_i$ to the MSSM
+      \end{modelblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Fixed order}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Contents}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Fixed-order calculation}
+  \emph{Input:} $\aem(M_Z)$, $\as(M_Z)$, $G_F$, $M_Z$, $M_t$, $m_b(m_b)$,\\
+  SUSY parameters, \ldots\\[2em]
+  \begin{center}
+    \begin{tikzpicture}[scale=0.9]
+      \draw[->, thick] (0,0) -- (0,1) node[left]{$M_t$} -- (0,4.5) node[left]{$\MS$} -- (0,5.5) node[left]{$Q_\text{input}$} -- (0,6) node[above] {$Q$};
+      \draw[thick] (1,0)   rectangle node{SM(5)}    (4,0.9);
+      \draw[thick] (1,1.1) rectangle node{MSSM}  (4,5.5);
+      \draw[<-, thick, darkgreen] (4.1,5.5) -- (4.5,5.5) node[right]{input $m_{\tilde{f}}^2$, $A_f$, $M_i$, $\mu$, $B\mu$};
+      \draw[<-, thick, red] (4.1,4.5) -- (4.5,4.5) node[right]{$M_h^2 = m_Z^2 c_{2\beta}^2 + (\Delta m_h^2)^{1L} + \cdots$};
+      \draw[<-, thick, darkgreen] (4.1,1) -- (4.5,1) node[right]{fix $y_i^\MSSM, y_f^\MSSM$, $v^\BSM$};
+      \draw[<->, thick, blue] (0.8,1.2) -- node[rotate=90, anchor=center, yshift=0.2cm]{RG running} (0.8,4.4);
+      \draw[<->, thick, blue] (0.8,4.6) -- (0.8,5.5);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Summary of fixed loop order calculation}
+  Typical order of magnitude of loop contributions (depends on
+  parameter scenario):
+  \begin{align*}
+    M_h &= m_h + \Delta m_h^{1L} + \Delta m_h^{2L} + \Delta m_h^{3L} + \cdots \\
+    &\approx [91 + \ord(20\ldots 30) + \ord(2\ldots 4) + \ord(1\ldots 2)] \GeV
+  \end{align*}
+  \emph{Advantages:}
+  \begin{itemize}
+  \item[\ok] includes logarithmic, non-logarithmic and suppressed terms of
+    $\ord((v^2/\MS^2)^\infty)$ at fixed loop order
+  \item[\ok] precise prediction if $\MS \sim m_t$ (then $\log(\MS/m_t) \approx 0$)
+  \end{itemize}
+  \emph{Disadvantages:}
+  \begin{itemize}
+  \item[\notok] large logarithmic corrections if $\MS \gg m_t$ \\
+    $\Rightarrow$ slow convergence of perturbation series \\
+    $\Rightarrow$ large theoretical uncertainty, ($1$--$2\GeV$, or
+    more)
+    % \\
+    % recall: $M_h^{\text{exp}} = (125.10 \pm 0.14)\GeV$
+  \end{itemize}
+  % \emph{Note:} 3-loop MSSM corrections available in \Himalaya \mycite{1708.05720}
+\end{frame}
+
+% \begin{frame}{Uncertainty estimate of the fixed-order \DRbarp\ calculation}
+%   \begin{center}
+%     \includegraphics[width=0.49\textwidth]{{{plots/SOFTSUSY/SS_TB-20_Xt--sqrt6}}}\hfill
+%     \includegraphics[width=0.49\textwidth]{{{plots/SOFTSUSY/SS_TB-20_Xt--sqrt6_individual}}}
+%   \end{center}
+%   \mycite{1804.09410}
+% \end{frame}
+
+%%% EFT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% colored SUSY particles are probably heavy -> this scenario is
+% possibly most realistic
+
+% 2. EFT approach: since colored SUSY particles are heavy -> construct
+% different EFTs: SM, SM+split, 2HDM, 2HDM+split
+%
+% a) simplest option: SM-like:
+% - pure EFT calculation is possible -> compare to FO!
+% - hybrid approach is possible (Flexibleefthiggs or FH-approach)
+%   (can be fully automatized due to its simplicity)
+%
+% b) advanced options: 2HDM-like
+% -> show some plots with uncertainty est. from Bagnaschi/Weiglein/Voigt
+
+% Conclusion: In the MSSM EFT calculation is most precise above ~ 1TeV
+% Beyond MSSM: not so clear
+% Flexibleefthiggs:  very precise and easy to automate
+% UOLEA: only 1-loop, but incl. h.o. operators, easy to automate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Pure Effective Field Theory}
+
+\begin{frame}{Contents}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Pure Effective Field Theory calculation}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.9]
+      \draw[->, thick] (0,0) -- (0,1) node[left]{$M_t$} -- (0,5) node[left]{$\MS$} -- (0,6) node[above] {$Q$};
+      \draw[thick] (1,0)   rectangle node{SM(5)} (4,0.9);
+      \draw[thick] (1,1.1) rectangle node{SM}    (4,4.9);
+      \draw[thick] (1,5.1) rectangle node{MSSM}  (4,6);
+      \draw[<-, thick, darkgreen] (4.1,5) -- (4.5,5) node[right]{$\lambda(\MS) = \frac{1}{4}\left(g_Y^{2} + g_2^2\right) c^2_{2\beta} + \cdots$};
+      \draw[<-, thick, red] (4.1,1) -- (4.5,1) node[right]{$(M_h^\SM)^2 = \lambda(M_t) v^2 + (\Delta m_h^2)^{(1L)} + \cdots$};
+      \draw[<->, thick, blue] (4.2,1.2) -- node[right, align=center]{RG running} (4.2,4.8);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Hybrid}
+
+\begin{frame}{Contents}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{FlexibleSUSY -- a spectrum generator generator}
+  \begin{center}
+    \begin{tikzpicture}
+    \node[block] (EXPR) {\textbf{analytic expressions}\\ (\Mathematica)\\ $\beta_g$, $\Sigma_h$, \ldots};
+    % \node[block, below = 1cm of EXPR, text width=15em] (FS) {\textbf{spectrum generator}\\ (C++)\\ solves BVP, calculates observables};
+    \node[block, below = 1cm of EXPR, text width=15em] (FS) {\textbf{spectrum generator}\\ (C++)\\ \footnotesize{\texttt{double calc\_Mh() \{ return ...; \}}}};
+    \node[block, below = 1cm of FS, text width=15em] (OUT) {$M_h$, $M_W$, BSM masses, $(g-2)_\mu$, EDMs, $h\rightarrow\gamma\gamma$, $h\rightarrow gg$};
+    \path[arrow] (EXPR) -- node[right]{generates} (FS);
+    \path[arrow] (FS) -- node[right]{calculates obs.} node[left]{solves BVP} (OUT);
+    \draw[red,very thick] ($(EXPR.north west)+(-1.5,0.5)$) node(FSname){} rectangle ($(OUT.south east)+(0.5,-0.5)$);
+    \node[above right = 0cm and 0cm of FSname.north west] {\textbf{\textcolor{red}{FlexibleSUSY}}};
+    \node[block, left = 2cm of EXPR, text width=5em] (SARAH) {\textbf{\SARAH}};
+    \path[arrow] (SARAH) -- node[above]{calculates} (EXPR);
+    \node[block, above = 0.5cm of SARAH, text width=5em] (Lagr) {$\Lagr$};
+    \path[arrow] (Lagr) -- (SARAH);
+    \node[block, below = 0.5cm of SARAH, text width=5em, gray] (SPheno) {SPheno};
+    \path[arrow, gray] (SARAH) -- (SPheno);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Comparison of fixed-order and EFT calculation}
+%   \begin{center}
+%     \includegraphics[width=0.49\textwidth]{plots/SOFTSUSY/Mh_MS_TB-20_Xt--sqrt6}\hfill
+%     \includegraphics[width=0.49\textwidth]{plots/SOFTSUSY/HSSUSY_TB-20_Xt--sqrt6_individual}
+%   \end{center}
+%   \begin{center}
+%     $\DMhFO \overset{!}{=} \DMhEFT$\\[0.5em]
+%     $\Rightarrow$ $\MS^{\text{equal}} \sim 1\TeV$ for
+%     small/large $\tan\beta$ and/or $X_t$
+%   \end{center}
+%   \mycite{1804.09410}
+% \end{frame}
+
+% \begin{frame}{Summary of fixed-order and EFT approaches}
+%   \begin{center}
+%     \begin{tabular}{lcc}
+%       \toprule
+%                   & low $\MS$ & high $\MS$ \\
+%                   & $\MS \lesssim 1\eh{TeV}$ & $\MS \gtrsim 1\eh{TeV}$ \\
+%       \midrule
+%       fixed-order & \ok       & \notok     \\
+%       EFT         & \notok    & \ok        \\
+%       ? hybrid    & \ok       & \ok        \\
+%       \bottomrule
+%     \end{tabular}
+%   \end{center}
+%   \vspace{2em}
+%   Q: Can the fixed-order and EFT approaches be combined? \\[1em]
+%   A: Yes!  \mycite{1312.4937, 1609.00371, 1710.03760, 1910.03595, 2003.04639}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{Hybrid}
+
+% \begin{frame}{Contents}
+%   \tableofcontents[currentsection,currentsubsection]  
+% \end{frame}
+
+% \begin{frame}{Hybrid calculation -- FeynHiggs approach}
+%   \emph{Goal:} resum large logarithms \emph{and} include suppressed
+%   $\ord(v^2/\MS^2)$ terms
+%   \\[2em]
+%   \emph{Idea I:} (``FeynHiggs approach'' \mycite{1312.4937, 1706.00346, 1805.00867, 1910.03595})\\
+%   Replace logs from fixed-order calculation by resummed logs:
+%   \begin{align*}
+%     M_h^2 = (M_h^2)_{\text{fixed-order}} - (M_h^2)_{\text{logs}} + (M_h^2)_{\text{resummed logs}}
+%   \end{align*}
+%   \emph{Advantages:}
+%   \begin{itemize}
+%   \item[\ok] approach applicable to any BSM model
+%   \item[\ok] any EFT can be used
+%   \end{itemize}
+%   \emph{Disadvantages:}
+%   \begin{itemize}
+%   \item[\notok] requires knowledge of fixed-order and EFT expressions
+%   \item[\notok] care must be taken to avoid double counting
+%   \end{itemize}
+% \end{frame}
+
+% \begin{frame}{FeynHiggs approach in FlexibleSUSY at 3-loop}
+%   \begin{center}
+%     \includegraphics[width=0.49\textwidth]{plots/Mh3l-match-really/scan_Mh_MS_TB-20_Xt--sqrt6_mixed_3L}\hfill
+%     \includegraphics[width=0.49\textwidth]{plots/Mh3l-match-really/scan_Mh_MS_TB-20_Xt--sqrt6_mixed_3L_diff}
+%   \end{center}
+%   \mycite{1910.03595}
+% \end{frame}
+
+% \begin{frame}{Hybrid calculation -- FlexibleEFTHiggs}
+%   % \emph{Goal:} resum large logarithms \emph{and} include suppressed
+%   % $\ord(v^2/\MS^2)$ terms
+%   % \\[2em]
+%   \emph{Idea II:} (``FlexibleEFTHiggs'' \mycite{1609.00371,
+%     1710.03760, 2003.04639})\\
+%   Incorporate all $\ord((v^2/\MS^2)^\infty)$ terms into $\lambda$ by
+%   using the matching condition for the FO calculations:
+%   \begin{align*}
+%     (M_h^2)_{\SM} &\overset{!}{=} (M_h^2)_{\BSM} \qquad \text{at } Q = \MS \\
+%     \lambda(\MS) v^2 + (\Delta m_h^2)_{\SM} &= (M_h^2)_{\BSM}
+%   \end{align*}
+%   $\Rightarrow$
+%   \begin{align*}
+%     \lambda(\MS) = \frac{1}{v^2}\left[(M_h^2)_{\BSM} - (\Delta m_h^2)_{\SM}\right]
+%   \end{align*}
+%   Continue as in the EFT calculation \ldots
+%   % \emph{Pro:}
+%   % \begin{itemize}
+%   % \item[\ok] approach applicable to any BSM model
+%   %   % easy to apply to any SM extensison
+%   % \item[\ok] easy to automate
+%   %   (only fixed-order expressions required)
+%   % \end{itemize}
+%   % \emph{Contra:}
+%   % \begin{itemize}
+%   % \item[\notok] difficult to extend to other EFTs beyond the SM (2HDM,
+%   %   \ldots)
+%   % \item[\meh] tricky to reach 2-loop accuracy\\
+%   %   (requires careful treatment of parameter matching)
+%   % \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Hybrid calculation -- FlexibleEFTHiggs}
+%   Continue as in the EFT calculation:
+%   \begin{center}
+%     \begin{tikzpicture}[scale=0.9]
+%       \draw[->, thick] (0,0) -- (0,1) node[left]{$M_t$} -- (0,5) node[left]{$\MS$} -- (0,6);
+%       \draw[thick] (1,0)   rectangle node{SM(5)} (4,0.9);
+%       \draw[thick] (1,1.1) rectangle node{SM}    (4,4.9);
+%       \draw[thick] (1,5.1) rectangle node{BSM}  (4,6);
+%       \draw[<-, thick, darkgreen] (4.1,5) -- (4.5,5) node[right]{$\lambda(\MS) = \frac{1}{v^2}\left[(M_h^2)_{\BSM} - (\Delta m_h^2)_{\SM}\right]$};
+%       \draw[<-, thick, red] (4.1,1) -- (4.5,1) node[right]{$(M_h^\SM)^2 = \lambda(M_t) v^2 + (\Delta m_h^2)_{\SM} + \cdots$};
+%       \draw[<->, thick, blue] (4.2,1.2) -- node[right]{RG running} (4.2,4.8);
+%     \end{tikzpicture}
+%   \end{center}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Proof: FlexibleEFTHiggs $\rightarrow$ EFT for $v^2 \ll M_S^2$}
+%   Consider the matching condition:
+%   \begin{align*}
+%     \lambda(\MS) = \frac{1}{v^2}\left[(M_h^2)_{\MSSM} - (\Delta m_h^2)_{\SM}\right]
+%   \end{align*}
+%   where at $\ord(y_t^4)$:
+%   \begin{align*}
+%     (\Delta m_h^2)_{\SM} ={}& - {\color{red}\Sigma^{\SM}_h} - {\color{red}6\kappa y_t^2 A_0(m_t)}\\
+%     (M_h^2)_{\MSSM} ={}& m_Z^2 c^2_{2\alpha} + \Big[ - {\color{red}\Sigma_h^\SM}
+%       - {\color{red} 6 \kappa y_t^2 A_0(m_t)} \Big] \; \frac{c^2_\alpha}{s^2_\beta} \\
+%     &- 6 \kappa y_t^4 v^2 \frac{c^2_\alpha}{s^2_\beta} B_0(\MS,\MS)
+%   \end{align*}
+% \end{frame}
+
+% \begin{frame}{Proof: FlexibleEFTHiggs $\rightarrow$ EFT for $v^2 \ll M_S^2$}
+%   \begin{align*}
+%     \lambda(\MS) ={}& \frac{1}{v^2}\left[(M_h^2)_{\MSSM} - (\Delta m_h^2)_{\SM}\right] \\
+%     ={}& \frac{m_Z^2}{v^2} c^2_{2\alpha}
+%     + \frac{1}{v^2} \Big[ - {\color{red}\Sigma_h^\SM}
+%     - {\color{red} 6 \kappa y_t^2 A_0(m_t)} \Big] \; \Big(\frac{c^2_\alpha}{s^2_\beta} - 1 \Big) \\
+%     &- 6 \kappa y_t^4 \frac{c^2_\alpha}{s^2_\beta} B_0(\MS,\MS)
+%   \end{align*}
+%   In the limit $v^2 \ll M_S^2$: $c_\alpha^2 \to s_\beta^2$, $c_{2\alpha}^2 \rightarrow c_{2\beta}^2$
+%   $\Rightarrow$
+%   \begin{align*}
+%     \lambda(\MS) ={}& \frac{1}{4} (g_Y^2 + g_2^2) c_{2\beta}^2
+%     - 6 \kappa y_t^4 B_0(\MS,\MS) \\
+%     ={}& \frac{1}{4} (g_Y^2 + g_2^2) c_{2\beta}^2
+%     - 6 \kappa y_t^4 \Big[
+%     - \log\frac{\MS^2}{Q^2} + \textcolor{blue}{\frac{p^2}{6 \MS^2} + \ord\Big(\frac{p^4}{\MS^4}\Big)} \Big]
+%   \end{align*}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Summary of FlexibleEFTHiggs hybrid calculation}
+%   Matching condition:
+%   \begin{align*}
+%     (M_h^2)_{\SM} &\overset{!}{=} (M_h^2)_{\BSM}
+%   \end{align*}
+%   \emph{Advantages:}
+%   \begin{itemize}
+%   \item[\ok] includes all power-suppressed terms at $n$-loop order
+%     $(v^2/\MS^2)^\infty [c + \log^n(\MS/Q) + \log^n(\MS/m_t)]$
+%   \item[\ok] resumms large non-suppressed logarithms $c \log^\infty(\MS/m_t)$
+%   \item[\ok] approach applicable to any BSM model
+%     % easy to apply to any SM extensison
+%   \item[\ok] only 1- and 2-point fixed-order expressions required
+%    $\rightarrow$ easy to automate (e.g.\ SARAH/FlexibleSUSY)
+%   \end{itemize}
+%   \emph{Disadvantages:}
+%   \begin{itemize}
+%   \item[\notok] difficult to extend to other EFTs beyond the SM (2HDM,
+%     \ldots)
+%   \item[\meh] tricky to reach 2-loop accuracy\\
+%     (requires careful treatment of parameter matching)
+%   \end{itemize}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Interpolation behaviour of FlexibleEFTHiggs in the MSSM}
+%   Interpolation behaviour between FO and EFT calculation:
+%   \begin{center}
+%     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-2L/Mh_MS_TB-20_Xt-0}}}\hfill
+%     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-2L/Mh_MS_TB-20_Xt--sqrt6}}}
+%   \end{center}
+%   \begin{raggedright}
+%     \mycite{plots along the lines of 2003.04639}
+%   \end{raggedright}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Hybrid calculation -- FlexibleEFTHiggs}
+%   \begin{center}
+%     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-3L/uncer_2panel_ms_scan_xt-sqrt6_tb20}}}\hfill
+%     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-3L/uncer_2panel_xt_scan_ms3_tb20}}}
+%   \end{center}
+%   \begin{raggedright}
+%     \mycite{2003.04639}
+%   \end{raggedright}\\[1em]
+%   Theory uncertainty $\DMh \lesssim 1\GeV$ in relevant degenerate SUSY scenarios.
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{$x_t$ resummation}
+% \begin{frame}{Contents}
+%   \tableofcontents[currentsection,currentsubsection]  
+% \end{frame}
+
+% \begin{frame}{Further improvements: $x_t$ resummation}
+%   Large stop mixing, $x_t \equiv X_t/\MS \approx \pm \sqrt{6}$, is an
+%   attractive scenario for low-scale supersymmetry.
+%   \\[1em]
+%   However: ``With large stop mixing comes large uncertainty.''\\
+%   --- P.\ Slavich
+%   \begin{center}
+%     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-1L/xt_MSSM_MS-2000}}}\hfill
+%     \includegraphics[width=0.49\textwidth]{{{plots/1912.04199/var_XtDR}}}
+%   \end{center}
+%   \begin{raggedright}
+%     \mycite{1609.00371, 1912.10002}
+%   \end{raggedright}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Recap: $\tan\beta$ resummation in $m_b$}
+%   Relation between running $m_b$ in the MSSM and $m_b^{\EFT}$ in the EFT:
+%   \begin{align*}
+%     m_b^{\EFT} = m_b (1 + \Delta m_b)
+%   \end{align*}
+%   where $\Delta m_b$ is expressed in terms of MSSM parameters.\\[1em]
+%   \begin{theorem}[hep-ph/9912516]
+%     There are no contributions to $\Delta m_b$ of
+%     $\ord((\as\tan\beta)^n)$ for $n\ge 2$.
+%   \end{theorem}
+%   \vspace*{1em}
+%   $\Rightarrow$ All higher-order MSSM contributions in $m_b$ of
+%   $\ord((\as\tan\beta)^n)$ can be resummed by writing:
+%   \begin{align*}
+%     m_b = \frac{m_b^{\EFT}}{1 + \Delta m_b}
+%     = m_b^{\EFT} \sum_{n=0}^\infty (-\Delta m_b)^n
+%   \end{align*}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{$x_t$ resummation}
+%   Relation between running $y_t$ in the MSSM and $y_t^{\EFT}$ in the EFT:
+%   \begin{align*}
+%     y_t^{\EFT} = y_t s_\beta + \Delta y_t
+%   \end{align*}
+%   where $\Delta y_t$ is expressed in terms of MSSM parameters.\\[1em]
+%   \begin{theorem}[Kwasnitza, Stöckinger (2003.04639)]
+%     There are no unsuppressed contributions to $\Delta y_t$
+%     of $\ord(\as^n x_t^{>1})$ for $n\ge 1$.
+%   \end{theorem}
+%   \vspace*{1em}
+%   $\Rightarrow$ All higher-order MSSM contributions in $y_t$ of
+%   $\ord(\as^n x_t^{>1})$ can be resummed by writing:
+%   \begin{align*}
+%     y_t = \frac{y_t^{\EFT}}{1 + \Delta y_t/(y_ts_\beta)}
+%   \end{align*}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % \begin{frame}{$x_t$ resummation}
+% %   $\Rightarrow$ by expressing $M_h$ in terms of \emph{MSSM parameters}
+% %   ($y_t$, $m_b$, \ldots), certain higher-order contributions can be
+% %   resummed to all orders.
+% %   \begin{center}
+% %     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-3L/plot_xt_MS_3_tb20_compare_hybrids}}}\hfill
+% %     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-3L/plot_xt_MS_3_tb20_compare_hybrids_diff}}}
+% %   \end{center}
+% %   \mycite{2003.04639}
+% % \end{frame}
+
+% \begin{frame}{$x_t$ resummation}
+%   $\Rightarrow$ by expressing $\lambda(\MS)$ in terms of \emph{MSSM parameters}
+%   ($y_t$, $m_b$, \ldots), certain higher-order contributions can be
+%   resummed to all orders
+%   \begin{center}
+%     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-3L/plot_MS_xt_sqrt6_tb20_compare_hybrids}}}\hfill
+%     \includegraphics[width=0.49\textwidth]{{{plots/FlexibleEFTHiggs-3L/plot_MS_xt_sqrt6_tb20_compare_hybrids_diff}}}
+%   \end{center}
+%   \mycite{2003.04639}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{Summary and conclusions}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Summary and Conclusions}
+%   \emph{Precise prediction of the Higgs boson mass} in supersymmetric
+%   models allows to constrain the model parameter space
+%   \\[1em]
+%   \emph{Effective field theory} and resummation methods necessary for
+%   a precise prediction (resummation of large logarithms and
+%   $x_t^\infty$ corrections)
+%   \\[1em]
+%   $\Rightarrow$
+%   \\[1em]
+%   \emph{Current precision} in the MSSM in relevant parameter space:
+%   $\DMh \lesssim 1\GeV$
+%   \\[1em]
+%   \emph{Stop quarks must be heavy}, $\MS \gtrsim 2\TeV$, in the MSSM
+%   for correct prediction of $M_h \approx 125\GeV$
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Outlook}
+%   \begin{minipage}[t][1.5cm][t]{\textwidth}
+%     \begin{center}
+%       \only<1>{\LARGE Large zoo of SUSY models\\ $\Rightarrow$ automation important!}
+%       \only<2>{\LARGE Thank you for your attention!}
+%     \end{center}
+%   \end{minipage}
+%   \begin{center}
+%     \includegraphics[width=0.9\textwidth]{images/FS.png}
+%   \end{center}
+%   \tikz[overlay,remember picture] 
+%   \node[at=(current page.north east),anchor=north east,inner sep=0pt, xshift=-1.5cm, yshift=-4cm] (FS) {
+%     \textbf{FlexibleSUSY}};
+%   \tikz[overlay,remember picture] 
+%   \draw[-latex,thick] ([yshift=-0.2cm] FS.south) to[out=270,in=0] ++(-2cm,-1cm);
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % backup slides
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}[noframenumbering]
+%   \begin{center}
+%     \Huge Backup
+%   \end{center}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}[noframenumbering]{Status of Higgs mass calculations}
+%   \begin{center}
+%   \begin{tabular}{lccc}
+%     \toprule
+%                  & FO & EFT & hybrid \\
+%     \midrule
+%     \multicolumn{1}{c}{MSSM} \\
+%     \midrule
+%     FeynHiggs    & 2L & 2L  & 2L \\
+%     FlexibleSUSY & 3L & 3L  & 3L$^\ddagger$ \\
+%     SARAH        & 2L & 2L  & 2L$^*$ \\
+%     SOFTSUSY     & 3L & --  & -- \\
+%     SPheno       & 2L & --  & 2L$^*$ \\
+%     \midrule
+%     \multicolumn{1}{c}{generic} \\
+%     \midrule
+%     FlexibleSUSY & 1L & --  & 1L$^\dagger$ \\
+%     SARAH/SPheno & 2L & 1L  & 2L$^*$ \\
+%     \bottomrule
+%   \end{tabular}
+%   \end{center}
+%   $^\ddagger$: in preparation, including $x_t$ resummation \\
+%   $^*$: NNLO + LL resummation \\
+%   $^\dagger$: NLO + NLL resummation
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}[noframenumbering]{Maximum stop masses in the MSSM}
+%   Maximum stop mass scenario with $\tan\beta = 1$:
+%   \begin{center}
+%     \includegraphics[width=0.5\textwidth]{plots/DMh/TB-1}
+%   \end{center}
+%   Dark region: charge and color breaking minima\\
+%   Hatched region: unbounded Higgs potential, $\lambda(\MS) < 0$
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}[noframenumbering]{Scenarios with 1 light Higgs doublet}
+%   \begin{center}
+%     \begin{tikzpicture}[scale=0.8, every node/.style={transform shape}]
+%       \draw[->, thick] (0,0) -- (0,1) node[left]{$M_t$} -- (0,4) node[left]{$\MS$} -- (0,6);
+%       \node at (2.5,7) {\emph{I high-scale SUSY}};
+%       \draw[thick] (1,0)   rectangle node{SM}    (4,0.9);
+%       \draw[thick] (1,1.1) rectangle node{SM}   (4,4.9);
+%       \draw[thick] (1,5.1) rectangle node{MSSM}  (4,6);
+%       % 
+%       \node at (6.5,7) {\emph{II split-SUSY}};
+%       \draw[thick] (5,0)   rectangle node{SM}    (8,1.9);
+%       \draw[thick] (5,2.1) rectangle node{SM + $\chi_i$ + $\tilde{g}$} (8,4.9);
+%       \draw[thick] (5,5.1) rectangle node{MSSM}  (8,6);
+%     \end{tikzpicture}
+%   \end{center}
+% \end{frame}
+
+% \begin{frame}[noframenumbering]{Scenarios with 2 light/intermediate Higgs doublets}
+%   \begin{center}
+%     \begin{tikzpicture}[scale=0.8, every node/.style={transform shape}]
+%       \draw[->, thick] (0,0) -- (0,1) node[left]{$M_t$} -- (0,4) node[left]{$\MS$} -- (0,6);
+%       \node[align=center] at (2.5,7) {\emph{III 2HDM}\\ (light $h_i$, $A$, $H^{\pm}$)};
+%       \draw[thick] (1,0)   rectangle node{SM} (4,0.9);
+%       \draw[thick] (1,1.1) rectangle node{2HDM} (4,4.9);
+%       \draw[thick] (1,5.1) rectangle node{MSSM} (4,6);
+%       % 
+%       \node[align=center] at (6.5,7) {\emph{IV 2HDM+split}\\ (light $h_i$, $A$, $H^{\pm}$,\\ intermediate $\chi_i$, $\tilde{g}$)};
+%       \draw[thick] (5,0)   rectangle node{SM} (8,0.9);
+%       \draw[thick] (5,1.1) rectangle node{2HDM} (8,2.9);
+%       \draw[thick] (5,3.1) rectangle node[align=center]{2HDM\\ + $\chi_i$ + $\tilde{g}$} (8,4.9);
+%       \draw[thick] (5,5.1) rectangle node{MSSM} (8,6);
+%       % 
+%       \node[align=center] at (10.5,7) {\emph{V 2HDM+split}\\ (light $\chi_i$, $\tilde{g}$, inter-\\ mediate $h_2$, $A$, $H^{\pm}$)};
+%       \draw[thick] (9,0)   rectangle node{SM} (12,0.9);
+%       \draw[thick] (9,1.1) rectangle node{SM + $\chi_i$ + $\tilde{g}$} (12,2.9);
+%       \draw[thick] (9,3.1) rectangle node[align=center]{2HDM\\ + $\chi_i$ + $\tilde{g}$} (12,4.9);
+%       \draw[thick] (9,5.1) rectangle node{MSSM} (12,6);
+%     \end{tikzpicture}
+%   \end{center}
+% \end{frame}
+
+\end{document}
