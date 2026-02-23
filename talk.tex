@@ -170,7 +170,7 @@
       \draw[thick] (1,0)   rectangle node{SM(5)}    (4,0.9);
       \draw[thick] (1,1.1) rectangle node{MSSM}  (4,5.5);
       \draw[<-, thick, darkgreen] (4.1,5.5) -- (4.5,5.5) node[right]{input $m_{\tilde{f}}^2$, $A_f$, $M_i$, $\mu$, $B\mu$};
-      \draw[->, thick, red] (4.1,4.5) -- (4.5,4.5) node[right]{output $M_h^2$};
+      \draw[->, thick, red] (4.1,4.5) -- (4.5,4.5) node[right]{output $M_h^\MSSM$};
       \draw[<-, thick, darkgreen] (4.1,1) -- (4.5,1) node[right]{fix $g_i, y_f$, $v$};
       \draw[<->, thick, blue] (0.8,1.1) -- node[rotate=90, anchor=center, yshift=0.2cm]{RG running} (0.8,4.45);
       \draw[<->, thick, blue] (0.8,4.54) -- (0.8,5.5);
@@ -213,17 +213,36 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Pure Effective Field Theory calculation}
+  \emph{Input:} same as in fixed-order calculation
   \begin{center}
     \begin{tikzpicture}[scale=0.9]
-      \draw[->, thick] (0,0) -- (0,1) node[left]{$M_t$} -- (0,5) node[left]{$\MS$} -- (0,6) node[above] {$Q$};
+      \draw[->, thick] (0,0) -- (0,6) node[above] {$Q$};
+      \draw[thick] (0.1,1) -- ++ (-0.2,0) node[left]{$Q_{\text{low}}\approx M_t$};
+      \draw[thick] (0.1,5) -- ++ (-0.2,0) node[left]{$Q_{\text{match}}\approx\sqrt{m_{\tilde{t}_1}m_{\tilde{t}_2}}$};
       \draw[thick] (1,0)   rectangle node{SM(5)} (4,0.9);
       \draw[thick] (1,1.1) rectangle node{SM}    (4,4.9);
       \draw[thick] (1,5.1) rectangle node{MSSM}  (4,6);
-      \draw[<-, thick, darkgreen] (4.1,5) -- (4.5,5) node[right]{$\lambda(\MS) = \frac{1}{4}\left(g_Y^{2} + g_2^2\right) c^2_{2\beta} + \cdots$};
-      \draw[<-, thick, red] (4.1,1) -- (4.5,1) node[right]{$(M_h^\SM)^2 = \lambda(M_t) v^2 + (\Delta m_h^2)^{(1L)} + \cdots$};
+      \draw[<-, thick, darkgreen] (4.1,5) -- (4.5,5) node[right]{calculate $\hat{\lambda}(Q_{\text{match}})$};
+      \draw[<-, thick, darkgreen] (4.1,1) -- (4.5,1) node[right,align=left]{fix $\hat{g}_i, \hat{y}_f$, $\hat{v}$\\ \textcolor{red}{output $M_h^\SM$}};
       \draw[<->, thick, blue] (4.2,1.2) -- node[right, align=center]{RG running} (4.2,4.8);
     \end{tikzpicture}
   \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Precision of fixed-order calculation}
+  Included contributions at fixed loop order:
+  \begin{itemize}
+  \item[$1\ell$]: full
+  \item[$2\ell$]: $g_3^2(y_t^4+y_b^4)+(y_t^2+y_b^2)^3+(y_t^2+y_\tau^2)^3$
+  \item[$3\ell$]: $g_3^4y_t^4$
+  \end{itemize}
+  Missing contributions:
+  \begin{itemize}
+  \item[$2\ell$]: electroweak contributions $g_1^n g_2^m$
+  \end{itemize}
+  Model: \texttt{HSSUSY}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -232,29 +251,6 @@
 
 \begin{frame}{Contents}
   \tableofcontents[currentsection,currentsubsection]
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{FlexibleSUSY -- a spectrum generator generator}
-  \begin{center}
-    \begin{tikzpicture}
-    \node[block] (EXPR) {\textbf{analytic expressions}\\ (\Mathematica)\\ $\beta_g$, $\Sigma_h$, \ldots};
-    % \node[block, below = 1cm of EXPR, text width=15em] (FS) {\textbf{spectrum generator}\\ (C++)\\ solves BVP, calculates observables};
-    \node[block, below = 1cm of EXPR, text width=15em] (FS) {\textbf{spectrum generator}\\ (C++)\\ \footnotesize{\texttt{double calc\_Mh() \{ return ...; \}}}};
-    \node[block, below = 1cm of FS, text width=15em] (OUT) {$M_h$, $M_W$, BSM masses, $(g-2)_\mu$, EDMs, $h\rightarrow\gamma\gamma$, $h\rightarrow gg$};
-    \path[arrow] (EXPR) -- node[right]{generates} (FS);
-    \path[arrow] (FS) -- node[right]{calculates obs.} node[left]{solves BVP} (OUT);
-    \draw[red,very thick] ($(EXPR.north west)+(-1.5,0.5)$) node(FSname){} rectangle ($(OUT.south east)+(0.5,-0.5)$);
-    \node[above right = 0cm and 0cm of FSname.north west] {\textbf{\textcolor{red}{FlexibleSUSY}}};
-    \node[block, left = 2cm of EXPR, text width=5em] (SARAH) {\textbf{\SARAH}};
-    \path[arrow] (SARAH) -- node[above]{calculates} (EXPR);
-    \node[block, above = 0.5cm of SARAH, text width=5em] (Lagr) {$\Lagr$};
-    \path[arrow] (Lagr) -- (SARAH);
-    \node[block, below = 0.5cm of SARAH, text width=5em, gray] (SPheno) {SPheno};
-    \path[arrow, gray] (SARAH) -- (SPheno);
-    \end{tikzpicture}
-  \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
