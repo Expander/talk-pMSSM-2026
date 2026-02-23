@@ -4,14 +4,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{lmodern}
-\usepackage{graphicx,import}
+\usepackage{graphicx}
 \usepackage{amsmath,amssymb,amstext,amsfonts} % mathrsfs
-\usepackage{array,booktabs,tabularx}
+% \usepackage{physics}
+\usepackage{booktabs,tabularx}
 \usepackage{tikz}
 \usetikzlibrary{shapes,calc,arrows,positioning}
 \tikzstyle{block} = [rectangle, draw, text width=10em, text centered, minimum height=2em]
 \tikzstyle{arrow} = [draw, -latex, thick]
-\usepackage{multirow}
+% \usepackage{multirow}
 \usepackage{tcolorbox}
 \usepackage{pifont}
 \usepackage{xspace}
@@ -40,7 +41,6 @@
 \newcommand{\ESSM}{E\textsubscript{6}SSM}
 \newcommand{\CESSM}{CE\textsubscript{6}SSM}
 \renewcommand{\emph}[1]{\textbf{\textcolor{darkblue}{#1}}}
-\newcommand{\dd}{\text{d}}
 \newcommand{\myurl}[1]{\href{#1}{#1}}
 \newcommand{\Superpot}{\mathcal{W}}
 \newcommand{\SuperField}[1]{#1}
@@ -159,46 +159,39 @@
 
 \begin{frame}{Fixed-order calculation}
   \emph{Input:} $\aem(M_Z)$, $\as(M_Z)$, $G_F$, $M_Z$, $M_t$, $m_b(m_b)$,\\
-  SUSY parameters, \ldots\\[2em]
+  SUSY parameters ($m_{\tilde{f}}^2$, $A_f$, $M_i$, $\mu$, $B\mu$), \ldots
+  %
   \begin{center}
     \begin{tikzpicture}[scale=0.9]
-      \draw[->, thick] (0,0) -- (0,1) node[left]{$M_t$} -- (0,4.5) node[left]{$\MS$} -- (0,5.5) node[left]{$Q_\text{input}$} -- (0,6) node[above] {$Q$};
+      \draw[->, thick] (0,0) -- (0,6) node[above] {$Q$};
+      \draw[thick] (0.1,1) -- ++ (-0.2,0) node[left]{$Q_\text{low}\approx M_Z$};
+      \draw[thick] (0.1,4.5) -- ++ (-0.2,0) node[left]{$\MS=\sqrt{m_{\tilde{t}_1}m_{\tilde{t}_2}}$};
+      \draw[thick] (0.1,5.5) -- ++ (-0.2,0) node[left]{$Q_\text{input}\approx M_S$};
       \draw[thick] (1,0)   rectangle node{SM(5)}    (4,0.9);
       \draw[thick] (1,1.1) rectangle node{MSSM}  (4,5.5);
       \draw[<-, thick, darkgreen] (4.1,5.5) -- (4.5,5.5) node[right]{input $m_{\tilde{f}}^2$, $A_f$, $M_i$, $\mu$, $B\mu$};
-      \draw[<-, thick, red] (4.1,4.5) -- (4.5,4.5) node[right]{$M_h^2 = m_Z^2 c_{2\beta}^2 + (\Delta m_h^2)^{1L} + \cdots$};
-      \draw[<-, thick, darkgreen] (4.1,1) -- (4.5,1) node[right]{fix $y_i^\MSSM, y_f^\MSSM$, $v^\BSM$};
-      \draw[<->, thick, blue] (0.8,1.2) -- node[rotate=90, anchor=center, yshift=0.2cm]{RG running} (0.8,4.4);
-      \draw[<->, thick, blue] (0.8,4.6) -- (0.8,5.5);
+      \draw[->, thick, red] (4.1,4.5) -- (4.5,4.5) node[right]{output $M_h^2$};
+      \draw[<-, thick, darkgreen] (4.1,1) -- (4.5,1) node[right]{fix $g_i, y_f$, $v$};
+      \draw[<->, thick, blue] (0.8,1.1) -- node[rotate=90, anchor=center, yshift=0.2cm]{RG running} (0.8,4.45);
+      \draw[<->, thick, blue] (0.8,4.54) -- (0.8,5.5);
     \end{tikzpicture}
   \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Summary of fixed loop order calculation}
-  Typical order of magnitude of loop contributions (depends on
-  parameter scenario):
-  \begin{align*}
-    M_h &= m_h + \Delta m_h^{1L} + \Delta m_h^{2L} + \Delta m_h^{3L} + \cdots \\
-    &\approx [91 + \ord(20\ldots 30) + \ord(2\ldots 4) + \ord(1\ldots 2)] \GeV
-  \end{align*}
-  \emph{Advantages:}
+\begin{frame}{Precision of fixed-order calculation}
+  Included contributions at fixed loop order:
   \begin{itemize}
-  \item[\ok] includes logarithmic, non-logarithmic and suppressed terms of
-    $\ord((v^2/\MS^2)^\infty)$ at fixed loop order
-  \item[\ok] precise prediction if $\MS \sim m_t$ (then $\log(\MS/m_t) \approx 0$)
+  \item[$1\ell$]: full
+  \item[$2\ell$]: $g_3^2(y_t^4+y_b^4)+(y_t^2+y_b^2)^3+(y_t^2+y_\tau^2)^3$
+  \item[$3\ell$]: $g_3^4y_t^4$
   \end{itemize}
-  \emph{Disadvantages:}
+  Missing contributions:
   \begin{itemize}
-  \item[\notok] large logarithmic corrections if $\MS \gg m_t$ \\
-    $\Rightarrow$ slow convergence of perturbation series \\
-    $\Rightarrow$ large theoretical uncertainty, ($1$--$2\GeV$, or
-    more)
-    % \\
-    % recall: $M_h^{\text{exp}} = (125.10 \pm 0.14)\GeV$
+  \item[$2\ell$]: electroweak contributions $g_1^n g_2^m$
   \end{itemize}
-  % \emph{Note:} 3-loop MSSM corrections available in \Himalaya \mycite{1708.05720}
+  Model: \texttt{NUHMSSMNoFVHimalaya}
 \end{frame}
 
 % \begin{frame}{Uncertainty estimate of the fixed-order \DRbarp\ calculation}
@@ -208,27 +201,6 @@
 %   \end{center}
 %   \mycite{1804.09410}
 % \end{frame}
-
-%%% EFT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% colored SUSY particles are probably heavy -> this scenario is
-% possibly most realistic
-
-% 2. EFT approach: since colored SUSY particles are heavy -> construct
-% different EFTs: SM, SM+split, 2HDM, 2HDM+split
-%
-% a) simplest option: SM-like:
-% - pure EFT calculation is possible -> compare to FO!
-% - hybrid approach is possible (Flexibleefthiggs or FH-approach)
-%   (can be fully automatized due to its simplicity)
-%
-% b) advanced options: 2HDM-like
-% -> show some plots with uncertainty est. from Bagnaschi/Weiglein/Voigt
-
-% Conclusion: In the MSSM EFT calculation is most precise above ~ 1TeV
-% Beyond MSSM: not so clear
-% Flexibleefthiggs:  very precise and easy to automate
-% UOLEA: only 1-loop, but incl. h.o. operators, easy to automate
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
