@@ -39,10 +39,6 @@
 \newcommand{\dimrepadj}[1]{\mathbf{\overline{#1}}}
 \newcommand{\ESSM}{E\textsubscript{6}SSM}
 \newcommand{\CESSM}{CE\textsubscript{6}SSM}
-\DeclareMathOperator{\tildeRe}{\widetilde Re}
-\DeclareMathOperator{\sign}{sign}
-\DeclareMathOperator{\re}{Re}
-\DeclareMathOperator{\im}{Im}
 \renewcommand{\emph}[1]{\textbf{\textcolor{darkblue}{#1}}}
 \newcommand{\dd}{\text{d}}
 \newcommand{\myurl}[1]{\href{#1}{#1}}
@@ -123,7 +119,7 @@
 
 \author[Alexander Voigt]{Alexander Voigt}
 
-\date{pMSSM topic meeting\\[1em] ??/??/2026}
+\date{pMSSM topic meeting\\[1em] March 2nd 2026}
 
 % \institute[Aachen]{RWTH Aachen}
 \subject{MSSM,Higgs,Supersymmetrie,EFT}
@@ -136,10 +132,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[plain]
-  \tikz [remember picture,overlay]
-  \node[anchor=south east] at
-    ([yshift=0.5cm,xshift=-0.5cm]current page.south east)
-    {\includegraphics[width=4cm]{images/RWTH_Logo.pdf}};
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south east] at ([yshift=0.5cm,xshift=-0.5cm]current page.south east) {\includegraphics[width=4cm]{images/RWTH_Logo.pdf}};
+    \node[anchor=south west] at ([yshift=0.5cm,xshift=0.5cm]current page.south west) {\includegraphics[width=4cm]{images/FS-logo.png}};
+  \end{tikzpicture}
   \titlepage
 \end{frame}
 
@@ -151,119 +147,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{FlexibleSUSY}
-  \begin{center}
-    \begin{tikzpicture}
-      \node[inner sep=0pt] (FS) at (0,0) {\includegraphics[width=.8\textwidth]{images/FS.png}};
-      \draw[latex-,thick] ([xshift=-3cm,yshift=0cm] FS.east) to[out=0,in=270] ++(2cm,1cm) node [above,yshift=0.5em] {\textbf{FlexibleSUSY}};
-    \end{tikzpicture}
-  \end{center}
-
-  \bigskip
-
-  Manuals:
-  \href{https://arxiv.org/abs/1406.2319}{[1406.2319]},
-  \href{https://arxiv.org/abs/1710.03760}{[1710.03760]}
-
-  \medskip
-
-  Download:
-  \href{https://flexiblesusy.hepforge.org}{flexiblesusy.hepforge.org},
-  \href{https://github.com/FlexibleSUSY/FlexibleSUSY}{github.com/FlexibleSUSY}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newenvironment{obsblock}[1]{%
-  \setbeamercolor{block body}{bg=darkgreen!10}
-  \setbeamercolor{block title}{bg=darkgreen}
-  \begin{block}{#1}}{\end{block}}
-
-\newenvironment{precblock}[1]{%
-  \setbeamercolor{block body}{bg=darkred!10}
-  \setbeamercolor{block title}{bg=darkred}
-  \begin{block}{#1}}{\end{block}}
-
-\newenvironment{flexblock}[1]{%
-  \setbeamercolor{block body}{bg=blue!10}
-  \setbeamercolor{block title}{bg=blue}
-  \begin{block}{#1}}{\end{block}}
-
-\newenvironment{speedblock}[1]{%
-  \setbeamercolor{block body}{bg=black!10}
-  \setbeamercolor{block title}{bg=black}
-  \begin{block}{#1}}{\end{block}}
-
-\begin{frame}{Features for all models (SUSY and non-SUSY)}
-  \begin{columns}[T]
-    \begin{column}{0.49\textwidth}
-      \begin{obsblock}{Observables}
-        $M_h$, $M_W$, BSM masses, $(g-2)_\mu$, EDMs,\\
-        $h\rightarrow\gamma\gamma$, $h\rightarrow gg$
-      \end{obsblock}
-      \begin{flexblock}{Flexibility}
-        multipe BVP solvers, user-defined BCs,\\ modular C++ code, \\
-        SLHA input/output, \Mathematica\ input/output, SQLite output
-      \end{flexblock}
-    \end{column}
-    \begin{column}{0.49\textwidth}
-      \begin{precblock}{High precision}
-        2L RGEs + 1L self energies (via \SARAH) + 1L thresholds,\\
-        NLL resummation for $M_h$ (\texttt{FlexibleEFTHiggs})
-      \end{precblock}
-      \begin{speedblock}{High speed}
-        multi-threading,\\ self-optimizing linear algebra,\\ lazy evaluation
-      \end{speedblock}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newenvironment{modelblock}[1]{%
-  \setbeamercolor{block body}{bg=darkyellow!15}
-  \setbeamercolor{block title}{fg=black,bg=darkyellow}
-  \begin{block}{#1}}{\end{block}}
-
-\begin{frame}{Additional model-specific precision corrections}
-  \begin{columns}[T]
-    \begin{column}{0.49\textwidth}
-      \begin{modelblock}{MSSM}
-        3L RGEs, 3L $M_h$, 2L $M_{H,A,H^\pm}$, 2L $(g-2)_\mu$, 2L
-        thresholds
-      \end{modelblock}
-      \begin{modelblock}{NMSSM}
-        2L $M_h$, 2L $M_{H,A,H^\pm}$, 2L thresholds
-      \end{modelblock}
-      \begin{modelblock}{Split-MSSM}
-        3L $M_h$, 2L thresholds for $y_t$, 2L thresholds for $\lambda$, $\tilde{g}_{ip}$
-        the MSSM
-      \end{modelblock}
-    \end{column}
-    \begin{column}{0.49\textwidth}
-      \begin{modelblock}{SM}
-        4L RGEs, 4L $M_h$, 4L thresholds for $\as$, $y_t$, 3L
-        thresholds for $\lambda$ to the MSSM (\texttt{HSSUSY})
-      \end{modelblock}
-      \begin{modelblock}{THDM-II}
-        2L thresholds for $\lambda_i$ to the MSSM
-      \end{modelblock}
-      \begin{modelblock}{THDM-II + $\tilde{h}$ + $\tilde{g}$}
-        1L thresholds for $\lambda_i$ to the MSSM
-      \end{modelblock}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Fixed order}
+\section{Fixed-order calculation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -348,7 +232,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Pure Effective Field Theory}
+\section{Pure Effective Field Theory}
 
 \begin{frame}{Contents}
   \tableofcontents[currentsection,currentsubsection]
@@ -372,7 +256,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Hybrid}
+\section{Hybrid}
 
 \begin{frame}{Contents}
   \tableofcontents[currentsection,currentsubsection]

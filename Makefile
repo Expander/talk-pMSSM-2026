@@ -2,7 +2,7 @@ PDF := talk.pdf
 TEX := talk.tex
 PLOTS :=
 
-.PHONY: all clean distclean
+.PHONY: all clean distclean $(PDF)
 
 all: $(PDF)
 
