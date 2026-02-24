@@ -184,25 +184,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Precision of fixed-order calculation (\texttt{NUHMSSMNoFVHimalaya})}
-  \centering
-  \begin{tabular}{llll}
-    \toprule
-               & 1\Loop & 2\Loop & 3\Loop\\
-    \midrule
-    $y_t$      & full & $y_tg_3^4$ & -- \\
-    $y_{b,\tau}$ & full & -- & -- \\
-    $g_3$      & full & $g_3^4$ &  $g_3^6$ \\
-    $g_{1,2}$   & full & -- & -- \\
-    $v$        & full & -- & -- \\
-    \midrule
-    $\beta_{y_t}$    & full & full & full \\
-    $\beta_{g_3}$    & full & full & full \\
-    $\beta_{\ldots}$    & full & full & full \\
-    $\beta_{v_i}$  & full & full & -- \\
-    \midrule
-    $M_h$  & full & $g_3^2(y_t^4+y_b^4)+(y_t^2+y_b^2)^3+(y_t^2+y_\tau^2)^3$ & $g_3^4 y_t^4$ \\
-    \bottomrule
-  \end{tabular}
+  \begin{center}
+    \begin{tabular}{llll}
+      \toprule
+      & 1\Loop & 2\Loop & 3\Loop\\
+      \midrule
+      $y_t$      & full & $y_tg_3^4$ & -- \\
+      $y_{b,\tau}$ & full & -- & -- \\
+      $g_3$      & full & $\textcolor{red}{g_3^4}$ & -- \\
+      $g_{1,2}$   & full & -- & -- \\
+      $v$        & full & -- & -- \\
+      \midrule
+      $\beta_{y_t}$    & full & full & full \\
+      $\beta_{g_3}$    & full & full & full \\
+      $\beta_{\ldots}$    & full & full & full \\
+      $\beta_{v_i}$  & full & full & -- \\
+      \midrule
+      $M_h$  & full & $g_3^2(y_t^4+y_b^4)+(y_t^2+y_b^2)^3+(y_t^2+y_\tau^2)^3$ & $g_3^4 y_t^4$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \textcolor{red}{red}: incomplete contributions w.r.t.\ $M_h$
 \end{frame}
 
 % \begin{frame}{Uncertainty estimate of the fixed-order \DRbarp\ calculation}
@@ -239,29 +241,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Pure EFT calculation (\texttt{HSSUSY})}
-  \centering
-  \begin{tabular}{llllll}
-    \toprule
-               & 1\Loop & 2\Loop & 3\Loop & 4\Loop & 5\Loop\\
-    \midrule
-    $\lambda$  & full & $(\at+\ab)\as$, & $\at\as^2$ & -- & -- \\
-               &      & $(\at+\ab)^2$, \\
-               &      & $\ab\atau$, $\atau^2$ \\
-    $v$        & full & -- & -- & -- & -- \\
-    $y_t$      & full & $\as^2$, \textcolor{red}{$\at\as$}, \textcolor{red}{$\at^2$} & $\as^3$ & $\textcolor{red}{\as^4}$ & -- \\
-    $y_{b,\tau}$ & full & -- & -- & -- & -- \\
-    $g_3$      & full & $\as^2$ &  $\as^3$ & -- & -- \\
-    $g_{1,2}$   & full & -- & -- & -- & -- \\
-    \midrule
-    $\beta_{\lambda}$ & full & full & full & $\at^2\as^3$ & -- \\
-    $\beta_{y_t}$    & full & full & full & $y_t\as^4$ & -- \\
-    $\beta_{g_3}$    & full & full & full & $\as^{0<n\le 4}$ & $\as^5$ \\
-    $\beta_{\cdots}$  & full & full & full & -- & -- \\
-    \midrule
-    $M_h$           & full & $(\at+\ab)\as$, & $\at\as^2$, \textcolor{orange}{$\at^2\as$}, \textcolor{orange}{$\at^3$} & $\at\as^3$ & -- \\
-                    &      & $(\at + \ab)^2$ \\
-    \bottomrule
-  \end{tabular}
+  \begin{center}
+    \begin{tabular}{llllll}
+      \toprule
+      & 1\Loop & 2\Loop & 3\Loop & 4\Loop & 5\Loop\\
+      \midrule
+      $\lambda$  & full & $(\at+\ab)\as$, & $\at\as^2$ & -- & -- \\
+      &      & $(\at+\ab)^2$, \\
+      &      & $\ab\atau$, $\atau^2$ \\
+      $v$        & full & -- & -- & -- & -- \\
+      $y_t$      & full & $\as^2$, \textcolor{red}{$\at\as$}, \textcolor{red}{$\at^2$} & $\as^3$ & $\textcolor{red}{\as^4}$ & -- \\
+      $y_{b,\tau}$ & full & -- & -- & -- & -- \\
+      $g_3$      & full & $\as^2$ &  $\as^3$ & -- & -- \\
+      $g_{1,2}$   & full & -- & -- & -- & -- \\
+      \midrule
+      $\beta_{\lambda}$ & full & full & full & $\at^2\as^3$ & -- \\
+      $\beta_{y_t}$    & full & full & full & $y_t\as^4$ & -- \\
+      $\beta_{g_3}$    & full & full & full & $\as^{0<n\le 4}$ & $\as^5$ \\
+      $\beta_{\cdots}$  & full & full & full & -- & -- \\
+      \midrule
+      $M_h$           & full & $(\at+\ab)\as$, & $\at\as^2$, \textcolor{red}{$\at^2\as$}, \textcolor{red}{$\at^3$} & $\at\as^3$ & -- \\
+      &      & $(\at + \ab)^2$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \textcolor{red}{red}: incomplete contributions w.r.t.\ $M_h$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
