@@ -191,7 +191,7 @@
       \midrule
       $y_t$      & full & $y_tg_3^4$ & -- \\
       $y_{b,\tau}$ & full & -- & -- \\
-      $g_3$      & full & $\textcolor{red}{g_3^4}$ & -- \\
+      $g_3$      & full & $g_3^4$ & -- \\
       $g_{1,2}$   & full & -- & -- \\
       $v$        & full & -- & -- \\
       \midrule
@@ -204,7 +204,7 @@
       \bottomrule
     \end{tabular}
   \end{center}
-  \textcolor{red}{red}: incomplete contributions w.r.t.\ $M_h$
+  % \textcolor{red}{red}: incomplete contributions w.r.t.\ $M_h$
 \end{frame}
 
 % \begin{frame}{Uncertainty estimate of the fixed-order \DRbarp\ calculation}
@@ -246,26 +246,23 @@
       \toprule
       & 1\Loop & 2\Loop & 3\Loop & 4\Loop & 5\Loop\\
       \midrule
-      $\lambda$  & full & $(\at+\ab)\as$, & $\at\as^2$ & -- & -- \\
-      &      & $(\at+\ab)^2$, \\
-      &      & $\ab\atau$, $\atau^2$ \\
+      $\lambda$  & full & $(y_t^4+y_b^4)g_3^2+(y_t^4+y_b^4+y_\tau^4)^2$ & $y_t^4g_3^4$ & -- & -- \\
       $v$        & full & -- & -- & -- & -- \\
-      $y_t$      & full & $\as^2$, \textcolor{red}{$\at\as$}, \textcolor{red}{$\at^2$} & $\as^3$ & $\textcolor{red}{\as^4}$ & -- \\
+      $y_t$      & full & $y_tg_3^4\textcolor{gray}{\,+\,y_t^3 g_3^2+y_t^5}$ & \textcolor{gray}{$y_tg_3^6$} & $\textcolor{gray}{y_tg_3^8}$ & -- \\
       $y_{b,\tau}$ & full & -- & -- & -- & -- \\
-      $g_3$      & full & $\as^2$ &  $\as^3$ & -- & -- \\
+      $g_3$      & full & $g_3^4$ &  $g_3^6$ & -- & -- \\
       $g_{1,2}$   & full & -- & -- & -- & -- \\
       \midrule
-      $\beta_{\lambda}$ & full & full & full & $\at^2\as^3$ & -- \\
-      $\beta_{y_t}$    & full & full & full & $y_t\as^4$ & -- \\
-      $\beta_{g_3}$    & full & full & full & $\as^{0<n\le 4}$ & $\as^5$ \\
+      $\beta_{\lambda}$ & full & full & full & $y_t^4g_3^6$ & -- \\
+      $\beta_{y_t}$    & full & full & full & $y_tg_3^8$ & -- \\
+      $\beta_{g_3}$    & full & full & full & $g_3^{0<n\le 8}$ & $g_3^{10}$ \\
       $\beta_{\cdots}$  & full & full & full & -- & -- \\
       \midrule
-      $M_h$           & full & $(\at+\ab)\as$, & $\at\as^2$, \textcolor{red}{$\at^2\as$}, \textcolor{red}{$\at^3$} & $\at\as^3$ & -- \\
-      &      & $(\at + \ab)^2$ \\
+      $M_h$           & full & $(y_t^4+y_b^4)g_3^2+(y_t^4 + y_b^4)^2$ & $y_t^4 g_3^4\textcolor{gray}{\,+\,y_t^6g_3^2+y_t^8}$ & \textcolor{gray}{$y_t^4 g_3^6$} & -- \\
       \bottomrule
     \end{tabular}
   \end{center}
-  \textcolor{red}{red}: incomplete contributions w.r.t.\ $M_h$
+  \textcolor{gray}{gray}: incomplete contributions w.r.t.\ $M_h$
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
