@@ -87,13 +87,22 @@
 \newcommand{\TeV}{\eh{TeV}}
 \newcommand{\SQCD}{\ensuremath{\scalefont{.8}\text{SQCD}}}
 \newcommand{\Qpole}{\ensuremath{Q_\text{pole}}}
+\newcommand{\Qlow}{\ensuremath{Q_\text{low}}}
 \newcommand{\Qmatch}{\ensuremath{Q_\text{match}}}
 \newcommand{\Qsplit}{\ensuremath{Q_\text{split}}\xspace}
 \newcommand{\QTHDM}{\ensuremath{Q_\text{\THDM}}\xspace}
-\newcommand{\DMh}{\ensuremath{\Delta M_h}}
-\newcommand{\DMhFO}{\ensuremath{\Delta M_h^{(\text{FO})}}}
-\newcommand{\DMhEFT}{\ensuremath{\Delta M_h^{(\text{EFT})}}}
+\newcommand{\DMh}{\ensuremath{\Delta M_h^{(\texttt{SS+H})}}}
+\newcommand{\DMhQpole}{\ensuremath{\Delta M_h^{(\Qpole)}}}
+\newcommand{\DMhQmatch}{\ensuremath{\Delta M_h^{(\Qmatch)}}}
+\newcommand{\DMhMt}{\ensuremath{\Delta M_h^{(m_t)}}}
+\newcommand{\DMhAlphaS}{\ensuremath{\Delta M_h^{(\as)}}}
+\newcommand{\DMhAlphaEm}{\ensuremath{\Delta M_h^{(\aem)}}}
+\newcommand{\DMhHSSUSY}{\ensuremath{\Delta M_h^{(\HSSUSY)}}}
+\newcommand{\DMhHSSUSYytSM}{\ensuremath{\Delta M_h^{(y_t^\SM)}}}
+\newcommand{\DMhHSSUSYytMSSM}{\ensuremath{\Delta M_h^{(y_t^\MSSM)}}}
+\newcommand{\DMhEFT}{\ensuremath{\Delta M_h^{(v^2/\MS^2)}}}
 \newcommand{\Mathematica}{\texttt{Mathematica}}
+\newcommand{\Loop}{\ensuremath{\ell}}
 \newcommand{\ord}{\ensuremath{\mathcal{O}}}
 \def\HSSUSY{\texttt{HSSUSY}}
 
@@ -210,40 +219,74 @@
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Pure Effective Field Theory calculation}
+\begin{frame}{Pure EFT calculation (\texttt{HSSUSY})}
   \emph{Input:} same as in fixed-order calculation
   \begin{center}
-    \begin{tikzpicture}[scale=0.9]
-      \draw[->, thick] (0,0) -- (0,6) node[above] {$Q$};
-      \draw[thick] (0.1,1) -- ++ (-0.2,0) node[left]{$Q_{\text{low}}\approx M_t$};
-      \draw[thick] (0.1,5) -- ++ (-0.2,0) node[left]{$Q_{\text{match}}\approx\sqrt{m_{\tilde{t}_1}m_{\tilde{t}_2}}$};
-      \draw[thick] (1,0)   rectangle node{SM(5)} (4,0.9);
-      \draw[thick] (1,1.1) rectangle node{SM}    (4,4.9);
-      \draw[thick] (1,5.1) rectangle node{MSSM}  (4,6);
-      \draw[<-, thick, darkgreen] (4.1,5) -- (4.5,5) node[right]{calculate $\hat{\lambda}(Q_{\text{match}})$};
-      \draw[<-, thick, darkgreen] (4.1,1) -- (4.5,1) node[right,align=left]{fix $\hat{g}_i, \hat{y}_f$, $\hat{v}$\\ \textcolor{red}{output $M_h^\SM$}};
-      \draw[<->, thick, blue] (4.2,1.2) -- node[right, align=center]{RG running} (4.2,4.8);
-    \end{tikzpicture}
+  \begin{tikzpicture}
+    \pgfmathsetmacro{\breite}{2};
+    \draw[->,thick] (0,0) -- (0,5) node[above]{$Q$};
+    \draw[thick,darkgreen] (0,4) node[left]{$\Qmatch = \MS$} -- node[above = 0.5cm,black]{MSSM} (\breite,4) node[right,black]{calculate $\hat\lambda(\hat y_f, \hat g_i, m_{\tilde{f}}^2, A_f, M_i,\dotsc)$};
+    \draw[thick,dashed,darkgreen] (0,2) node[left]{$\Qpole = M_t$} -- (\breite,2) node[right,black,text width=8cm]{calculate $M_h^\SM(\hat\lambda, \hat g_i, \hat y_f, \hat v)$};
+    \draw[thick,darkgreen] (0,1) node[left]{$\Qlow = M_Z$} -- node[above = 1.5cm,black]{SM} node[below = 0.5cm,black]{SM(5)} (\breite,1) node[right,black,text width=8cm]{
+      calculate $\hat y_f$, $\hat g_i$, $\hat v$};
+    \draw[<->,blue,thick] (-2.5,1) -- node[above,rotate=90]{RG running} (-2.5,4);
+  \end{tikzpicture}
   \end{center}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Precision of fixed-order calculation}
-  Included contributions at fixed loop order:
-  \begin{itemize}
-  \item[$1\ell$]: full
-  \item[$2\ell$]: $g_3^2(y_t^4+y_b^4)+(y_t^2+y_b^2)^3+(y_t^2+y_\tau^2)^3$
-  \item[$3\ell$]: $g_3^4y_t^4$
-  \end{itemize}
-  Missing contributions:
-  \begin{itemize}
-  \item[$2\ell$]: electroweak contributions $g_1^n g_2^m$
-  \end{itemize}
-  Model: \texttt{HSSUSY}
+\begin{frame}{Pure EFT calculation (\texttt{HSSUSY})}
+  \centering
+  \begin{tabular}{llllll}
+    \toprule
+               & 1\Loop & 2\Loop & 3\Loop & 4\Loop & 5\Loop\\
+    \midrule
+    $\lambda$  & full & $(\at+\ab)\as$, & $\at\as^2$ & -- & -- \\
+               &      & $(\at+\ab)^2$, \\
+               &      & $\ab\atau$, $\atau^2$ \\
+    $v$        & full & -- & -- & -- & -- \\
+    $y_t$      & full & $\as^2$, \textcolor{red}{$\at\as$}, \textcolor{red}{$\at^2$} & $\as^3$ & $\textcolor{red}{\as^4}$ & -- \\
+    $y_{b,\tau}$ & full & -- & -- & -- & -- \\
+    $g_3$      & full & $\as^2$ &  $\as^3$ & -- & -- \\
+    $g_{1,2}$   & full & -- & -- & -- & -- \\
+    \midrule
+    $\beta_{\lambda}$ & full & full & full & $\at^2\as^3$ & -- \\
+    $\beta_{y_t}$    & full & full & full & $y_t\as^4$ & -- \\
+    $\beta_{g_3}$    & full & full & full & $\as^{0<n\le 4}$ & $\as^5$ \\
+    $\beta_{\cdots}$  & full & full & full & -- & -- \\
+    \midrule
+    $M_h$           & full & $(\at+\ab)\as$, & $\at\as^2$, \textcolor{orange}{$\at^2\as$}, \textcolor{orange}{$\at^3$} & $\at\as^3$ & -- \\
+                    &      & $(\at + \ab)^2$ \\
+    \bottomrule
+  \end{tabular}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Uncertainty estimate of the EFT calculation}
+  \bigcite{1804.09410} considered 5 sources of uncertainty:
+  \begin{align*}
+    \textcolor{darkgreen}{\DMhQpole} &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| & \text{\mycite{1609.00371}} \\
+    \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| & \text{\mycite{1407.4081}} \\
+    \textcolor{darkgreen}{\DMhHSSUSYytSM} &= \left| M_h(y_t^{\SM,2\Loop}(M_Z)) - M_h(y_t^{\SM,3\Loop}(M_Z)) \right| & \text{\mycite{1504.05200}} \\
+    \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right| & \text{\mycite{1504.05200}} \\
+    \DMhHSSUSYytMSSM &= \left| M_h - M_h(y_t^\MSSM(\MS)) \right| & \text{\mycite{Bagnaschi,AV,Weiglein}}
+  \end{align*}
+  Combination:
+  \begin{align*}
+    \DMhHSSUSY &= \DMhQpole + \DMhQmatch + \DMhHSSUSYytSM + \DMhHSSUSYytMSSM \\
+    &\quad + \DMhEFT
+  \end{align*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Uncertainty estimate of the EFT calculation}
+%   \begin{center}
+%     \includegraphics[width=0.7\textwidth]{plots/kuts-9/HSSUSY_TB-20_Xt--sqrt6_individual}
+%   \end{center}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
