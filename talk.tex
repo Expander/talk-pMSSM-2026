@@ -172,17 +172,11 @@
   %
   \begin{center}
     \begin{tikzpicture}[scale=0.9]
-      \draw[->, thick] (0,0) -- (0,6) node[above] {$Q$};
-      \draw[thick] (0.1,1) -- ++ (-0.2,0) node[left]{$Q_\text{low}\approx M_Z$};
-      \draw[thick] (0.1,4.5) -- ++ (-0.2,0) node[left]{$\MS=\sqrt{m_{\tilde{t}_1}m_{\tilde{t}_2}}$};
-      \draw[thick] (0.1,5.5) -- ++ (-0.2,0) node[left]{$Q_\text{input}\approx M_S$};
-      \draw[thick] (1,0)   rectangle node{SM(5)}    (4,0.9);
-      \draw[thick] (1,1.1) rectangle node{MSSM}  (4,5.5);
-      \draw[<-, thick, darkgreen] (4.1,5.5) -- (4.5,5.5) node[right]{input $m_{\tilde{f}}^2$, $A_f$, $M_i$, $\mu$, $B\mu$};
-      \draw[->, thick, red] (4.1,4.5) -- (4.5,4.5) node[right]{output $M_h^\MSSM$};
-      \draw[<-, thick, darkgreen] (4.1,1) -- (4.5,1) node[right]{fix $g_i, y_f$, $v$};
-      \draw[<->, thick, blue] (0.8,1.1) -- node[rotate=90, anchor=center, yshift=0.2cm]{RG running} (0.8,4.45);
-      \draw[<->, thick, blue] (0.8,4.54) -- (0.8,5.5);
+      \pgfmathsetmacro{\breite}{2};
+      \draw[->, thick] (0,0) -- (0,5) node[above] {$Q$};
+      \draw[thick] (0,4.5) node[left]{$Q_\text{input}$} -- ++ (\breite,0) node[right]{input $m_{\tilde{f}}^2$, $A_f$, $M_i$, $\mu$, $B\mu$};
+      \draw[thick,dashed] (0,3.5) node[left]{$\Qpole=\MS$} -- ++ (\breite,0) node[right]{calculate $M_h^\MSSM$};
+      \draw[thick] (0,1) node[left]{$\Qlow=M_Z$} -- node[above=1cm,black]{MSSM} node[below=0.5cm,black]{SM(5)} ++ (\breite,0) node[right]{calculate $g_i, y_f$, $v$};
     \end{tikzpicture}
   \end{center}
 \end{frame}
@@ -225,11 +219,11 @@
   \begin{tikzpicture}
     \pgfmathsetmacro{\breite}{2};
     \draw[->,thick] (0,0) -- (0,5) node[above]{$Q$};
-    \draw[thick,darkgreen] (0,4) node[left]{$\Qmatch = \MS$} -- node[above = 0.5cm,black]{MSSM} (\breite,4) node[right,black]{calculate $\hat\lambda(\hat y_f, \hat g_i, m_{\tilde{f}}^2, A_f, M_i,\dotsc)$};
-    \draw[thick,dashed,darkgreen] (0,2) node[left]{$\Qpole = M_t$} -- (\breite,2) node[right,black,text width=8cm]{calculate $M_h^\SM(\hat\lambda, \hat g_i, \hat y_f, \hat v)$};
-    \draw[thick,darkgreen] (0,1) node[left]{$\Qlow = M_Z$} -- node[above = 1.5cm,black]{SM} node[below = 0.5cm,black]{SM(5)} (\breite,1) node[right,black,text width=8cm]{
+    \draw[thick] (0,4) node[left]{$\Qmatch = \MS$} -- node[above = 0.5cm,black]{MSSM} (\breite,4) node[right,black]{calculate $\hat\lambda(\hat y_f, \hat g_i, m_{\tilde{f}}^2, A_f, M_i,\dotsc)$};
+    \draw[thick,dashed] (0,2) node[left]{$\Qpole = M_t$} -- (\breite,2) node[right,black,text width=8cm]{calculate $M_h^\SM(\hat\lambda, \hat g_i, \hat y_f, \hat v)$};
+    \draw[thick] (0,1) node[left]{$\Qlow = M_Z$} -- node[above = 1.5cm,black]{SM} node[below = 0.5cm,black]{SM(5)} (\breite,1) node[right,black,text width=8cm]{
       calculate $\hat y_f$, $\hat g_i$, $\hat v$};
-    \draw[<->,blue,thick] (-2.5,1) -- node[above,rotate=90]{RG running} (-2.5,4);
+    % \draw[<->,blue,thick] (-2.5,1) -- node[above,rotate=90]{RG running} (-2.5,4);
   \end{tikzpicture}
   \end{center}
 \end{frame}
