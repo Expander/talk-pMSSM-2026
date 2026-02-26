@@ -69,7 +69,7 @@
 \newcommand{\FS}{\texttt{FlexibleSUSY}\xspace}
 \newcommand{\fsh}{\texttt{FS+H}\xspace}
 \newcommand{\feft}{\texttt{FlexibleEFTHiggs}\xspace}
-\newcommand{\hssusy}{\texttt{HSSUSY}\xspace}
+\newcommand{\HSSUSY}{\texttt{HSSUSY}\xspace}
 \newcommand{\Himalaya}{\texttt{Himalaya}\xspace}
 \newcommand{\FH}{\texttt{FeynHiggs}\xspace}
 \newcommand{\SPheno}{\texttt{SPheno}\xspace}
@@ -88,11 +88,9 @@
 \newcommand{\aem}{\alpha_\text{em}}
 \newcommand{\GeV}{\eh{GeV}}
 \newcommand{\TeV}{\eh{TeV}}
-\newcommand{\SQCD}{\ensuremath{\scalefont{.8}\text{SQCD}}}
 \newcommand{\Qpole}{\ensuremath{Q_\text{pole}}}
 \newcommand{\Qlow}{\ensuremath{Q_\text{low}}}
 \newcommand{\Qmatch}{\ensuremath{Q_\text{match}}}
-\newcommand{\Qsplit}{\ensuremath{Q_\text{split}}\xspace}
 \newcommand{\QTHDM}{\ensuremath{Q_\text{\THDM}}\xspace}
 \newcommand{\DMh}{\ensuremath{\Delta M_h^{(\texttt{SS+H})}}}
 \newcommand{\DMhQpole}{\ensuremath{\Delta M_h^{(\Qpole)}}}
@@ -108,7 +106,6 @@
 \newcommand{\Mathematica}{\texttt{Mathematica}}
 \newcommand{\Loop}{\ensuremath{\ell}}
 \newcommand{\ord}{\ensuremath{\mathcal{O}}}
-\def\HSSUSY{\texttt{HSSUSY}}
 
 % set look of slides
 \usetheme{Madrid}
@@ -249,14 +246,14 @@
           title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
           ymin=110, ymax=135,
           ytick={115,120,125,130,135},
-          ylabel={$M_h$ / GeV},
+          ylabel={$M_h$/GeV},
           xticklabels=\empty
         ]
         \addplot[red,thick] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaMSdata};
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
         \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$ / GeV},xlabel={$\MS$ / GeV},ymin=0,ymax=4,ytick distance=1]
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$\MS$/GeV},ymin=0,ymax=4,ytick distance=1]
         \addplot[red,thick] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaMSdata};
       \end{groupplot}
     \end{tikzpicture}
@@ -283,7 +280,7 @@
           ymin=105,
           ymax=135,
           ytick={110,115,120,125,130,135},
-          ylabel={$M_h$ / GeV},
+          ylabel={$M_h$/GeV},
           xticklabels=\empty
         ]
         \addplot[red,thick,restrict x to domain=-3.5:1] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
@@ -291,7 +288,7 @@
         \addplot[name path=upper,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
         \addplot[name path=lower,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
         \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$ / GeV},xlabel={$x_t$ },ymin=0,ymax=3,ytick distance=1]
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$x_t$ },ymin=0,ymax=3,ytick distance=1]
         \addplot[red,thick,restrict x to domain=-3.5:1] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaXtdata};
       \end{groupplot}
     \end{tikzpicture}
@@ -305,6 +302,8 @@
 \begin{frame}{Contents}
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Pure EFT calculation (\texttt{HSSUSY})}
   \emph{Input:} same as in fixed-order calculation
@@ -388,14 +387,14 @@
           title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
           ymin=110, ymax=130,
           ytick={115,120,125,130},
-          ylabel={$M_h$ / GeV},
+          ylabel={$M_h$/GeV},
           xticklabels=\empty
         ]
         \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYMSdata};
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYMSdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYMSdata};
         \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$ / GeV},xlabel={$\MS$ / GeV},ymin=0,ymax=4,ytick distance=1]
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$\MS$/GeV},ymin=0,ymax=4,ytick distance=1]
         \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYMSdata};
       \end{groupplot}
     \end{tikzpicture}
@@ -422,14 +421,14 @@
           ymin=105,
           ymax=130,
           ytick={110,115,120,125,130},
-          ylabel={$M_h$ / GeV},
+          ylabel={$M_h$/GeV},
           xticklabels=\empty
         ]
         \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYXtdata};
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYXtdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYXtdata};
         \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$ / GeV},xlabel={$x_t$ },ymin=0,ymax=2,ytick distance=1]
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$x_t$ },ymin=0,ymax=2,ytick distance=1]
         \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYXtdata};
       \end{groupplot}
     \end{tikzpicture}
@@ -444,5 +443,28 @@
 \begin{frame}{Contents}
   \tableofcontents[currentsection,currentsubsection]
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Hybrid calculation (\texttt{MSSMEFTHiggs})}
+  Similar to pure EFT calculation, but $\hat{\lambda}(\Qmatch)$ is
+  determined from
+  %
+  \begin{align*}
+    (M_h^2)_{\MSSM}
+    &= (M_h^2)_{\SM} \\
+    &= \hat{\lambda}(\Qmatch)\hat{v}^2(\Qmatch) + \Delta_{\SM}
+  \end{align*}
+  $\Rightarrow$
+  \begin{align*}
+    \hat{\lambda}(\Qmatch)
+    = \frac{(M_h^2)_{\MSSM} - \Delta_{\SM}}{\hat{v}^2(\Qmatch)}
+  \end{align*}
+  %
+  \emph{Important:} Loop/coupling expansion on r.h.s.\ required to
+  avoid non-cancelled higher-order large logarithms.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
