@@ -12,6 +12,9 @@
 \usetikzlibrary{shapes,calc,arrows,positioning}
 \tikzstyle{block} = [rectangle, draw, text width=10em, text centered, minimum height=2em]
 \tikzstyle{arrow} = [draw, -latex, thick]
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
 % \usepackage{multirow}
 \usepackage{tcolorbox}
 \usepackage{pifont}
@@ -285,11 +288,26 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \begin{frame}{Uncertainty estimate of the EFT calculation}
-%   \begin{center}
-%     \includegraphics[width=0.7\textwidth]{plots/kuts-9/HSSUSY_TB-20_Xt--sqrt6_individual}
-%   \end{center}
-% \end{frame}
+\begin{frame}{Uncertainty estimate of the EFT calculation}
+  \begin{center}
+    % \includegraphics[width=0.7\textwidth]{plots/kuts-9/HSSUSY_TB-20_Xt--sqrt6_individual}
+    \begin{tikzpicture}
+      \begin{semilogxaxis}[
+        title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
+        xlabel={$\MS$ / GeV},
+        ylabel={$M_h$ / GeV},
+        xmin=200, xmax=10000,
+        ymin=100, ymax=130,
+        grid
+        ]
+        \addplot[red,thick] table[x index=0, y index=1] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
+        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
+        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
+        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+      \end{semilogxaxis}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
