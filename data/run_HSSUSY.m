@@ -63,7 +63,8 @@ HSSUSYModelPars[MS_, TB_, Xtt_] := {
     TwoLoopAbAs -> 1,
     TwoLoopAtAb -> 1,
     TwoLoopAtauAtau -> 1,
-    TwoLoopAtAt -> 1
+    TwoLoopAtAt -> 1,
+    ThreeLoopAtAsAs -> 1
 };
 
 HSSUSYCalcMhDMh[MS_, TB_, Xtt_] :=

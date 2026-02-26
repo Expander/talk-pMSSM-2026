@@ -275,7 +275,7 @@
   \begin{align*}
     \textcolor{darkgreen}{\DMhQpole} &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| & \text{\mycite{1609.00371}} \\
     \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| & \text{\mycite{1407.4081}} \\
-    \textcolor{darkgreen}{\DMhHSSUSYytSM} &= \left| M_h(y_t^{\SM,2\Loop}(M_Z)) - M_h(y_t^{\SM,3\Loop}(M_Z)) \right| & \text{\mycite{1504.05200}} \\
+    \textcolor{darkgreen}{\DMhHSSUSYytSM} &= \left| M_h(y_t^{\SM,3\Loop}(M_Z)) - M_h(y_t^{\SM,4\Loop}(M_Z)) \right| & \text{\mycite{1504.05200}} \\
     \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right| & \text{\mycite{1504.05200}} \\
     \DMhHSSUSYytMSSM &= \left| M_h - M_h(y_t^\MSSM(\MS)) \right| & \text{\mycite{Bagnaschi,AV,Weiglein}}
   \end{align*}
@@ -290,7 +290,6 @@
 
 \begin{frame}{Uncertainty estimate of the EFT calculation}
   \begin{center}
-    % \includegraphics[width=0.7\textwidth]{plots/kuts-9/HSSUSY_TB-20_Xt--sqrt6_individual}
     \begin{tikzpicture}
       \begin{semilogxaxis}[
         title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
@@ -298,6 +297,7 @@
         ylabel={$M_h$ / GeV},
         xmin=200, xmax=10000,
         ymin=100, ymax=130,
+        ytick distance=5,
         grid
         ]
         \addplot[red,thick] table[x index=0, y index=1] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
