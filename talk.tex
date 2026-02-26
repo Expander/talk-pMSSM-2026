@@ -95,6 +95,7 @@
 \newcommand{\DMh}{\ensuremath{\Delta M_h^{(\texttt{SS+H})}}}
 \newcommand{\DMhQpole}{\ensuremath{\Delta M_h^{(\Qpole)}}}
 \newcommand{\DMhQmatch}{\ensuremath{\Delta M_h^{(\Qmatch)}}}
+\newcommand{\DMhQlow}{\ensuremath{\Delta M_h^{(\Qlow)}}}
 \newcommand{\DMhMt}{\ensuremath{\Delta M_h^{(m_t)}}}
 \newcommand{\DMhAlphaS}{\ensuremath{\Delta M_h^{(\as)}}}
 \newcommand{\DMhAlphaEm}{\ensuremath{\Delta M_h^{(\aem)}}}
@@ -211,9 +212,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Uncertainty estimate of the EFT calculation}
-  Sources of uncertainty:
+  Possible uncertainty estimates:
   \begin{align*}
     \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
+    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
     \DMhgsMSSM &= \left| M_h(g_3^{1\Loop}(M_Z)) - M_h(g_3^{2\Loop}(M_Z)) \right|
   \end{align*}
 \end{frame}
@@ -247,25 +249,26 @@
 
 \begin{frame}{Pure EFT calculation (\texttt{HSSUSY})}
   \begin{center}
-    \begin{tabular}{llllll}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lllll}
       \toprule
-      & 1\Loop & 2\Loop & 3\Loop & 4\Loop & 5\Loop\\
+      & 1\Loop & 2\Loop & 3\Loop & 4\Loop \\
       \midrule
-      $\hat\lambda$  & full & $(\hat{y}_t^4+\hat{y}_b^4)\hat{g}_3^2+(\hat{y}_t^4+\hat{y}_b^4+\hat{y}_\tau^4)^2$ & $\hat{y}_t^4\hat{g}_3^4$ & -- & -- \\
-      $\hat{v}$        & full & -- & -- & -- & -- \\
-      $\hat{y}_t$      & full & $\hat{y}_t\hat{g}_3^4\textcolor{gray}{\,+\,\hat{y}_t^3 \hat{g}_3^2+\hat{y}_t^5}$ & \textcolor{gray}{$\hat{y}_t\hat{g}_3^6$} & $\textcolor{gray}{\hat{y}_t\hat{g}_3^8}$ & -- \\
-      $\hat{y}_{b,\tau}$ & full & -- & -- & -- & -- \\
-      $\hat{g}_3$      & full & $\hat{g}_3^4$ &  $\hat{g}_3^6$ & -- & -- \\
-      $\hat{g}_{1,2}$   & full & -- & -- & -- & -- \\
+      $\hat\lambda$  & full & $(\hat{y}_t^4+\hat{y}_b^4)\hat{g}_3^2+(\hat{y}_t^4+\hat{y}_b^4+\hat{y}_\tau^4)^2$ & $\hat{y}_t^4\hat{g}_3^4$ & -- \\
+      $\hat{v}$        & full & -- & -- & -- \\
+      $\hat{y}_t$      & full & $\hat{y}_t\hat{g}_3^4\textcolor{gray}{\,+\,\hat{y}_t^3 \hat{g}_3^2+\hat{y}_t^5}$ & \textcolor{gray}{$\hat{y}_t\hat{g}_3^6$} & $\textcolor{gray}{\hat{y}_t\hat{g}_3^8}$ \\
+      $\hat{y}_{b,\tau}$ & full & -- & -- & -- \\
+      $\hat{g}_3$      & full & $\hat{g}_3^4$ & $\hat{g}_3^6$ & -- \\
+      $\hat{g}_{1,2}$   & full & -- & -- & -- \\
       \midrule
-      $\beta_{\hat\lambda}$ & full & full & full & $\hat{y}_t^4\hat{g}_3^6$ & -- \\
-      $\beta_{\hat{y}_t}$    & full & full & full & $\hat{y}_t\hat{g}_3^8$ & -- \\
-      $\beta_{\hat{g}_3}$    & full & full & full & $\hat{g}_3^{0<n\le 8}$ & $\hat{g}_3^{10}$ \\
-      $\beta_{\cdots}$  & full & full & full & -- & -- \\
+      $\beta_{\hat\lambda}$ & full & full & full & $\hat{y}_t^4\hat{g}_3^6$ \\
+      $\beta_{\hat{y}_t}$    & full & full & full & $\hat{y}_t\hat{g}_3^8$ \\
+      $\beta_{\hat{g}_3}$    & full & full & full & $\hat{g}_3^{0<n\le 8}$ \\
+      $\beta_{\cdots}$  & full & full & full & -- \\
       \midrule
-      $M_h$           & full & $(\hat{y}_t^4+\hat{y}_b^4)\hat{g}_3^2+(\hat{y}_t^4 + \hat{y}_b^4)^2$ & $\hat{y}_t^4 \hat{g}_3^4\textcolor{gray}{\,+\,\hat{y}_t^6\hat{g}_3^2+\hat{y}_t^8}$ & \textcolor{gray}{$\hat{y}_t^4 \hat{g}_3^6$} & -- \\
+      $M_h$           & full & $(\hat{y}_t^4+\hat{y}_b^4)\hat{g}_3^2+(\hat{y}_t^4 + \hat{y}_b^4)^2$ & $\hat{y}_t^4 \hat{g}_3^4\textcolor{gray}{\,+\,\hat{y}_t^6\hat{g}_3^2+\hat{y}_t^8}$ & \textcolor{gray}{$\hat{y}_t^4 \hat{g}_3^6$} \\
       \bottomrule
-    \end{tabular}
+    \end{tabular}}
   \end{center}
   \textcolor{gray}{gray}: incomplete contributions w.r.t.\ $M_h$
 \end{frame}
@@ -273,10 +276,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Uncertainty estimate of the EFT calculation}
-  Sources of uncertainty:
+  Possible uncertainty estimates:
   \begin{align*}
     \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
     \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| \\
+    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
     \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right| \\
     \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right|
   \end{align*}
