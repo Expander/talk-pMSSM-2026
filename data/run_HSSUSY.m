@@ -76,10 +76,20 @@ HSSUSYCalcMhDMh[MS_, TB_, Xtt_] :=
 
 Xtt = -Sqrt[6];
 TBX = 20;
-MSX = 5000;
+MSX = 3000;
+
+(* scan over MS *)
 
 msValues = 10^Subdivide[Log[10,10^2], Log[10,10^4], 50];
 
 scanMS = ParallelMap[{N[#], Sequence @@ HSSUSYCalcMhDMh[#, TBX, Xtt]}&, msValues];
 
 Export["HSSUSY_MS-Mh-DMh_TB-" <> ToString[TBX] <> "_xt-" <> ToString[N[Xtt]] <> ".dat", scanMS];
+
+(* scan over xt *)
+
+xtValues = Subdivide[-3.5, 3.5, 60];
+
+scanXt = ParallelMap[{N[#], Sequence @@ HSSUSYCalcMhDMh[MSX, TBX, #]}&, xtValues];
+
+Export["HSSUSY_Xt-Mh-DMh_MS-" <> ToString[MSX] <> "_TB-" <> ToString[TBX] <> ".dat", scanXt];
