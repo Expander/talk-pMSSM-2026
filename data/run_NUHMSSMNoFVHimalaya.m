@@ -9,6 +9,7 @@ settings = {
     betaFunctionLoopOrder -> 3,
     poleMassLoopOrder -> 3,
     ewsbLoopOrder -> 3,
+    forceOutput -> 1, (* ignore mA tachyons *)
     thresholdCorrectionsLoopOrder -> 2,
     thresholdCorrections -> 122111221
 };
