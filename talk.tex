@@ -289,6 +289,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\HSSUSYMSdata}{data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat}
+\newcommand{\HSSUSYXtdata}{data/HSSUSY_Xt-Mh-DMh_MS-3000_TB-20.dat}
 
 \begin{frame}{Uncertainty estimate of the EFT calculation}
   \begin{center}
@@ -299,7 +300,7 @@
           vertical sep=0,
         },
         height={0.65\textheight},
-        width={0.9\textwidth},
+        width={0.7\textwidth},
         xmode=log,
         log basis x=10,
         xmin=400, xmax=10000,
@@ -308,9 +309,7 @@
         \nextgroupplot[
           title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
           ymin=110, ymax=130,
-          ytick distance=5,
-          ytick={110,115,120,125,130},
-          yticklabels={,115,120,125,130},
+          ytick={115,120,125,130},
           ylabel={$M_h$ / GeV},
           xticklabels=\empty
         ]
@@ -322,6 +321,39 @@
         \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYMSdata};
       \end{groupplot}
     \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Uncertainty estimate of the EFT calculation}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          vertical sep=0,
+        },
+        height={0.65\textheight},
+        width={0.7\textwidth},
+        xmin=-3.5, xmax=3.5,
+        grid
+        ]
+        \nextgroupplot[
+          title={$\MS=3$ TeV, $\tan\beta=20$},
+          ymin=105,
+          ymax=130,
+          ytick={110,115,120,125,130},
+          ylabel={$M_h$ / GeV},
+          xticklabels=\empty
+        ]
+        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYXtdata};
+        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYXtdata};
+        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYXtdata};
+        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$ / GeV},xlabel={$x_t$ },ymin=0,ymax=2,ytick distance=1]
+        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYXtdata};
+      \end{groupplot}
+    \end{tikzpicture}
+
   \end{center}
 \end{frame}
 
