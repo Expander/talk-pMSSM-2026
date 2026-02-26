@@ -101,7 +101,7 @@
 \newcommand{\DMhAlphaS}{\ensuremath{\Delta M_h^{(\as)}}}
 \newcommand{\DMhAlphaEm}{\ensuremath{\Delta M_h^{(\aem)}}}
 \newcommand{\DMhHSSUSY}{\ensuremath{\Delta M_h^{(\HSSUSY)}}}
-\newcommand{\DMhHSSUSYytSM}{\ensuremath{\Delta M_h^{(y_t^\SM)}}}
+\newcommand{\DMhHSSUSYytSM}{\ensuremath{\Delta M_h^{(\hat{y}_t)}}}
 \newcommand{\DMhHSSUSYytMSSM}{\ensuremath{\Delta M_h^{(y_t^\MSSM)}}}
 \newcommand{\DMhEFT}{\ensuremath{\Delta M_h^{(v^2/\MS^2)}}}
 \newcommand{\Mathematica}{\texttt{Mathematica}}
@@ -271,19 +271,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Uncertainty estimate of the EFT calculation}
-  \bigcite{1804.09410} considered 5 sources of uncertainty:
+  Sources of uncertainty:
   \begin{align*}
-    \textcolor{darkgreen}{\DMhQpole} &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| & \text{\mycite{1609.00371}} \\
+    \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| & \text{\mycite{1609.00371}} \\
     \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| & \text{\mycite{1407.4081}} \\
-    \textcolor{darkgreen}{\DMhHSSUSYytSM} &= \left| M_h(y_t^{\SM,3\Loop}(M_Z)) - M_h(y_t^{\SM,4\Loop}(M_Z)) \right| & \text{\mycite{1504.05200}} \\
-    \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right| & \text{\mycite{1504.05200}} \\
-    \DMhHSSUSYytMSSM &= \left| M_h - M_h(y_t^\MSSM(\MS)) \right| & \text{\mycite{Bagnaschi,AV,Weiglein}}
+    \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right| & \text{\mycite{1504.05200}} \\
+    \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right| & \text{\mycite{1504.05200}} % \\
+    % \DMhHSSUSYytMSSM &= \left| M_h - M_h(y_t^\MSSM(\MS)) \right| & \text{\mycite{Bagnaschi,AV,Weiglein}}
   \end{align*}
   Combination:
-  \begin{align*}
-    \DMhHSSUSY &= \DMhQpole + \DMhQmatch + \DMhHSSUSYytSM + \DMhHSSUSYytMSSM \\
-    &\quad + \DMhEFT
-  \end{align*}
+  \begin{equation*}
+    \DMhHSSUSY = \DMhQpole + \DMhQmatch + \DMhHSSUSYytSM % + \DMhHSSUSYytMSSM \\
+    + \DMhEFT
+  \end{equation*}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -323,6 +323,8 @@
     \end{tikzpicture}
   \end{center}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Uncertainty estimate of the EFT calculation}
   \begin{center}
