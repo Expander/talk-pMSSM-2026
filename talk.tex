@@ -291,22 +291,34 @@
 \begin{frame}{Uncertainty estimate of the EFT calculation}
   \begin{center}
     \begin{tikzpicture}
-      \begin{axis}[
-        title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
-        xlabel={$\MS$ / GeV},
-        ylabel={$M_h$ / GeV},
+      \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          vertical sep=0,
+        },
+        height={0.65\textheight},
+        width={0.9\textwidth},
         xmode=log,
         log basis x=10,
-        xmin=200, xmax=10000,
-        ymin=100, ymax=130,
-        ytick distance=5,
+        xmin=400, xmax=10000,
         grid
+        ]
+        \nextgroupplot[
+          title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
+          ymin=110, ymax=130,
+          ytick distance=5,
+          ytick={110,115,120,125,130},
+          yticklabels={,115,120,125,130},
+          ylabel={$M_h$ / GeV},
+          xticklabels=\empty
         ]
         \addplot[red,thick] table[x index=0, y index=1] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
         \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-      \end{axis}
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$ / GeV},xlabel={$\MS$ / GeV},ymin=0,ymax=4,ytick distance=1]
+        \addplot[red,thick] table[x index=0,y index=2] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
+      \end{groupplot}
     \end{tikzpicture}
   \end{center}
 \end{frame}
