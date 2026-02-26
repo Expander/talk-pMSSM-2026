@@ -288,6 +288,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\HSSUSYMSdata}{data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat}
+
 \begin{frame}{Uncertainty estimate of the EFT calculation}
   \begin{center}
     \begin{tikzpicture}
@@ -312,12 +314,12 @@
           ylabel={$M_h$ / GeV},
           xticklabels=\empty
         ]
-        \addplot[red,thick] table[x index=0, y index=1] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
-        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
-        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
+        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYMSdata};
+        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYMSdata};
+        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYMSdata};
         \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
         \nextgroupplot[height=3cm,ylabel={$\Delta M_h$ / GeV},xlabel={$\MS$ / GeV},ymin=0,ymax=4,ytick distance=1]
-        \addplot[red,thick] table[x index=0,y index=2] {data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat};
+        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYMSdata};
       \end{groupplot}
     \end{tikzpicture}
   \end{center}
