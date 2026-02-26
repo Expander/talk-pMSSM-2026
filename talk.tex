@@ -216,83 +216,6 @@
     \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
     \DMhgsMSSM &= \left| M_h(g_3^{1\Loop}(M_Z)) - M_h(g_3^{2\Loop}(M_Z)) \right|
   \end{align*}
-  Combination:
-  \begin{equation*}
-    \DMhFO = \DMhQpole + \DMhgsMSSM
-  \end{equation*}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\NUHMSSMNoFVHimalayaMSdata}{data/NUHMSSMNoFVHimalaya_MS-Mh-DMh_TB-20_xt--2.44949.dat}
-\newcommand{\NUHMSSMNoFVHimalayaXtdata}{data/NUHMSSMNoFVHimalaya_Xt-Mh-DMh_MS-3000_TB-20.dat}
-
-\begin{frame}{Uncertainty estimate of the fixed-order calculation}
-  \begin{center}
-    \begin{tikzpicture}
-      \begin{groupplot}[
-        group style={
-          group size=1 by 2,
-          vertical sep=0,
-        },
-        height={0.65\textheight},
-        width={0.7\textwidth},
-        xmode=log,
-        log basis x=10,
-        xmin=400, xmax=10000,
-        grid
-        ]
-        \nextgroupplot[
-          title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
-          ymin=110, ymax=135,
-          ytick={115,120,125,130,135},
-          ylabel={$M_h$/GeV},
-          xticklabels=\empty
-        ]
-        \addplot[red,thick] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaMSdata};
-        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
-        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$\MS$/GeV},ymin=0,ymax=4,ytick distance=1]
-        \addplot[red,thick] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaMSdata};
-      \end{groupplot}
-    \end{tikzpicture}
-  \end{center}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Uncertainty estimate of the fixed-order calculation}
-  \begin{center}
-    \begin{tikzpicture}
-      \begin{groupplot}[
-        group style={
-          group size=1 by 2,
-          vertical sep=0,
-        },
-        height={0.65\textheight},
-        width={0.7\textwidth},
-        xmin=-3.5, xmax=3.5,
-        grid
-        ]
-        \nextgroupplot[
-          title={$\MS=3$ TeV, $\tan\beta=20$},
-          ymin=105,
-          ymax=135,
-          ytick={110,115,120,125,130,135},
-          ylabel={$M_h$/GeV},
-          xticklabels=\empty
-        ]
-        \addplot[red,thick,restrict x to domain=-3.5:1] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
-        \addplot[red,thick,dashed,restrict x to domain=1:3.5] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
-        \addplot[name path=upper,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
-        \addplot[name path=lower,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$x_t$ },ymin=0,ymax=3,ytick distance=1]
-        \addplot[red,thick,restrict x to domain=-3.5:1] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaXtdata};
-      \end{groupplot}
-    \end{tikzpicture}
-  \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -352,88 +275,11 @@
 \begin{frame}{Uncertainty estimate of the EFT calculation}
   Sources of uncertainty:
   \begin{align*}
-    \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| & \text{\mycite{1609.00371}} \\
-    \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| & \text{\mycite{1407.4081}} \\
-    \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right| & \text{\mycite{1504.05200}} \\
-    \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right| & \text{\mycite{1504.05200}} % \\
+    \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
+    \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| \\
+    \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right| \\
+    \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right|
   \end{align*}
-  Combination:
-  \begin{equation*}
-    \DMhHSSUSY = \DMhQpole + \DMhQmatch + \DMhHSSUSYytSM + \DMhEFT
-  \end{equation*}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\HSSUSYMSdata}{data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat}
-\newcommand{\HSSUSYXtdata}{data/HSSUSY_Xt-Mh-DMh_MS-3000_TB-20.dat}
-
-\begin{frame}{Uncertainty estimate of the EFT calculation}
-  \begin{center}
-    \begin{tikzpicture}
-      \begin{groupplot}[
-        group style={
-          group size=1 by 2,
-          vertical sep=0,
-        },
-        height={0.65\textheight},
-        width={0.7\textwidth},
-        xmode=log,
-        log basis x=10,
-        xmin=400, xmax=10000,
-        grid
-        ]
-        \nextgroupplot[
-          title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
-          ymin=110, ymax=130,
-          ytick={115,120,125,130},
-          ylabel={$M_h$/GeV},
-          xticklabels=\empty
-        ]
-        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYMSdata};
-        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYMSdata};
-        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYMSdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$\MS$/GeV},ymin=0,ymax=4,ytick distance=1]
-        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYMSdata};
-      \end{groupplot}
-    \end{tikzpicture}
-  \end{center}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Uncertainty estimate of the EFT calculation}
-  \begin{center}
-    \begin{tikzpicture}
-      \begin{groupplot}[
-        group style={
-          group size=1 by 2,
-          vertical sep=0,
-        },
-        height={0.65\textheight},
-        width={0.7\textwidth},
-        xmin=-3.5, xmax=3.5,
-        grid
-        ]
-        \nextgroupplot[
-          title={$\MS=3$ TeV, $\tan\beta=20$},
-          ymin=105,
-          ymax=130,
-          ytick={110,115,120,125,130},
-          ylabel={$M_h$/GeV},
-          xticklabels=\empty
-        ]
-        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYXtdata};
-        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYXtdata};
-        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYXtdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
-        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$x_t$ },ymin=0,ymax=2,ytick distance=1]
-        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYXtdata};
-      \end{groupplot}
-    \end{tikzpicture}
-
-  \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -466,5 +312,92 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\NUHMSSMNoFVHimalayaMSdata}{data/NUHMSSMNoFVHimalaya_MS-Mh-DMh_TB-20_xt--2.44949.dat}
+\newcommand{\NUHMSSMNoFVHimalayaXtdata}{data/NUHMSSMNoFVHimalaya_Xt-Mh-DMh_MS-3000_TB-20.dat}
+\newcommand{\HSSUSYMSdata}{data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat}
+\newcommand{\HSSUSYXtdata}{data/HSSUSY_Xt-Mh-DMh_MS-3000_TB-20.dat}
+
+\begin{frame}{Uncertainty estimate}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          vertical sep=0,
+        },
+        height={0.65\textheight},
+        width={0.7\textwidth},
+        xmode=log,
+        log basis x=10,
+        xmin=400, xmax=10000,
+        grid
+        ]
+        \nextgroupplot[
+          title={$\tan\beta=20$, $x_t=-\sqrt{6}$},
+          ymin=110, ymax=135,
+          ytick={115,120,125,130,135},
+          ylabel={$M_h$/GeV},
+          xticklabels=\empty
+        ]
+        \addplot[black,thick] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaMSdata};
+        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
+        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
+        \addplot[black!30,fill opacity=0.5] fill between[of=upper and lower];
+        %
+        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYMSdata};
+        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYMSdata};
+        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYMSdata};
+        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+        %%
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$\MS$/GeV},ymin=0,ymax=4,ytick distance=1]
+        \addplot[black,thick] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaMSdata};
+        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYMSdata};
+      \end{groupplot}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Uncertainty estimate}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          vertical sep=0,
+        },
+        height={0.65\textheight},
+        width={0.7\textwidth},
+        xmin=-3.5, xmax=3.5,
+        grid
+        ]
+        \nextgroupplot[
+          title={$\MS=3$ TeV, $\tan\beta=20$},
+          ymin=105,
+          ymax=130,
+          ytick={110,115,120,125,130},
+          ylabel={$M_h$/GeV},
+          xticklabels=\empty
+        ]
+        \addplot[black,thick,restrict x to domain=-3.5:1] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
+        \addplot[black,thick,dashed,restrict x to domain=1:3.5] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
+        \addplot[name path=upper,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
+        \addplot[name path=lower,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
+        \addplot[black!30,fill opacity=0.5] fill between[of=upper and lower];
+        %
+        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYXtdata};
+        \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYXtdata};
+        \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYXtdata};
+        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+        %%
+        \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$x_t$ },ymin=0,ymax=3,ytick distance=1]
+        \addplot[black,thick,restrict x to domain=-3.5:1] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaXtdata};
+        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYXtdata};
+      \end{groupplot}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
 
 \end{document}
