@@ -5,13 +5,13 @@ Mtpole = 173.34;
 
 settings = {
     precisionGoal -> 1.*^-5,
-    maxIterations -> 100,
+    maxIterations -> 1000,
     betaFunctionLoopOrder -> 3,
     poleMassLoopOrder -> 3,
     ewsbLoopOrder -> 3,
     forceOutput -> 1, (* ignore mA tachyons *)
     thresholdCorrectionsLoopOrder -> 2,
-    thresholdCorrections -> 122111221
+    thresholdCorrections -> 122111121 (* as at 1-loop to avoid mA tachyons for xt > 0 *)
 };
 
 smpars = {
