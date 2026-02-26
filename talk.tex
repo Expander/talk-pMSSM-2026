@@ -331,6 +331,8 @@
         xmode=log,
         log basis x=10,
         xmin=400, xmax=10000,
+        legend pos=outer north east,
+        legend cell align={left},
         grid
         ]
         \nextgroupplot[
@@ -340,19 +342,21 @@
           ylabel={$M_h$/GeV},
           xticklabels=\empty
         ]
-        \addplot[black,thick] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaMSdata};
+        \addplot[black,thick,densely dotted] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaMSdata};
+        \addlegendentry{FO};
+        \addplot[darkgreen,thick,densely dashed] table[x index=0, y index=1] {\HSSUSYMSdata};
+        \addlegendentry{EFT};
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaMSdata};
         \addplot[black!30,fill opacity=0.5] fill between[of=upper and lower];
         %
-        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYMSdata};
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYMSdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYMSdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[darkgreen!30,fill opacity=0.5] fill between[of=upper and lower];
         %%
         \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$\MS$/GeV},ymin=0,ymax=4,ytick distance=1]
-        \addplot[black,thick] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaMSdata};
-        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYMSdata};
+        \addplot[black,thick,densely dotted] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaMSdata};
+        \addplot[darkgreen,thick,densely dashed] table[x index=0,y index=2] {\HSSUSYMSdata};
       \end{groupplot}
     \end{tikzpicture}
   \end{center}
@@ -371,6 +375,8 @@
         height={0.65\textheight},
         width={0.7\textwidth},
         xmin=-3.5, xmax=3.5,
+        legend pos=outer north east,
+        legend cell align={left},
         grid
         ]
         \nextgroupplot[
@@ -381,20 +387,22 @@
           ylabel={$M_h$/GeV},
           xticklabels=\empty
         ]
-        \addplot[black,thick,restrict x to domain=-3.5:1] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
-        \addplot[black,thick,dashed,restrict x to domain=1:3.5] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
+        \addplot[black,thick,densely dotted,restrict x to domain=-3.5:1] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
+        \addlegendentry{FO};
+        \addplot[darkgreen,thick,densely dashed] table[x index=0, y index=1] {\HSSUSYXtdata};
+        \addlegendentry{EFT};
+        \addplot[black,thick,densely dotted,restrict x to domain=1:3.5] table[x index=0, y index=1] {\NUHMSSMNoFVHimalayaXtdata};
         \addplot[name path=upper,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
         \addplot[name path=lower,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\NUHMSSMNoFVHimalayaXtdata};
         \addplot[black!30,fill opacity=0.5] fill between[of=upper and lower];
         %
-        \addplot[red,thick] table[x index=0, y index=1] {\HSSUSYXtdata};
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\HSSUSYXtdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\HSSUSYXtdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[darkgreen!30,fill opacity=0.5] fill between[of=upper and lower];
         %%
         \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$x_t$ },ymin=0,ymax=3,ytick distance=1]
-        \addplot[black,thick,restrict x to domain=-3.5:1] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaXtdata};
-        \addplot[red,thick] table[x index=0,y index=2] {\HSSUSYXtdata};
+        \addplot[black,densely dotted,thick,restrict x to domain=-3.5:1] table[x index=0,y index=2] {\NUHMSSMNoFVHimalayaXtdata};
+        \addplot[darkgreen,thick,densely dashed] table[x index=0,y index=2] {\HSSUSYXtdata};
       \end{groupplot}
     \end{tikzpicture}
   \end{center}
