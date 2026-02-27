@@ -354,26 +354,26 @@
         ]
         \addplot[black,thick,densely dotted] table[x index=0, y index=1] {\FOMSdata};
         \addlegendentry{FO};
-        \addplot[darkgreen,thick,densely dashed] table[x index=0, y index=1] {\EFTMSdata};
+        \addplot[blue,thick,densely dashed] table[x index=0, y index=1] {\EFTMSdata};
         \addlegendentry{EFT};
         \addplot[red,thick] table[x index=0, y index=1] {\FEFTMSdata};
-        \addlegendentry{FEFT};
+        \addlegendentry{Hybrid};
         %
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\FOMSdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\FOMSdata};
-        \addplot[black!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[black!20,fill opacity=0.5] fill between[of=upper and lower];
         %
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\EFTMSdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\EFTMSdata};
-        \addplot[darkgreen!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[blue!40,fill opacity=0.5] fill between[of=upper and lower];
         %
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\FEFTMSdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\FEFTMSdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[red!40,fill opacity=0.5] fill between[of=upper and lower];
         %%
         \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$\MS$/GeV},ymin=0,ymax=4,ytick distance=1]
         \addplot[black,thick,densely dotted] table[x index=0,y index=2] {\FOMSdata};
-        \addplot[darkgreen,thick,densely dashed] table[x index=0,y index=2] {\EFTMSdata};
+        \addplot[blue,thick,densely dashed] table[x index=0,y index=2] {\EFTMSdata};
         \addplot[red,thick] table[x index=0,y index=2] {\FEFTMSdata};
       \end{groupplot}
     \end{tikzpicture}
@@ -407,27 +407,27 @@
         ]
         \addplot[black,thick,densely dotted,restrict x to domain=-3.5:1] table[x index=0, y index=1] {\FOXtdata};
         \addlegendentry{FO};
-        \addplot[darkgreen,thick,densely dashed] table[x index=0, y index=1] {\EFTXtdata};
+        \addplot[blue,thick,densely dashed] table[x index=0, y index=1] {\EFTXtdata};
         \addlegendentry{EFT};
         \addplot[red,thick] table[x index=0, y index=1] {\FEFTXtdata};
-        \addlegendentry{FEFT};
+        \addlegendentry{Hybrid};
         %
         \addplot[black,thick,densely dotted,restrict x to domain=1:3.5] table[x index=0, y index=1] {\FOXtdata};
         \addplot[name path=upper,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\FOXtdata};
         \addplot[name path=lower,draw=none,restrict x to domain=-3.5:1] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\FOXtdata};
-        \addplot[black!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[black!20,fill opacity=0.5] fill between[of=upper and lower];
         %
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\EFTXtdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\EFTXtdata};
-        \addplot[darkgreen!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[blue!40,fill opacity=0.5] fill between[of=upper and lower];
         %
         \addplot[name path=upper,draw=none] table[x index=0, y expr=\thisrowno{1}+\thisrowno{2}] {\FEFTXtdata};
         \addplot[name path=lower,draw=none] table[x index=0, y expr=\thisrowno{1}-\thisrowno{2}] {\FEFTXtdata};
-        \addplot[red!30,fill opacity=0.5] fill between[of=upper and lower];
+        \addplot[red!40,fill opacity=0.5] fill between[of=upper and lower];
         %%
         \nextgroupplot[height=3cm,ylabel={$\Delta M_h$/GeV},xlabel={$x_t$ },ymin=0,ymax=3,ytick distance=1]
         \addplot[black,densely dotted,thick,restrict x to domain=-3.5:1] table[x index=0,y index=2] {\FOXtdata};
-        \addplot[darkgreen,thick,densely dashed] table[x index=0,y index=2] {\EFTXtdata};
+        \addplot[blue,thick,densely dashed] table[x index=0,y index=2] {\EFTXtdata};
         \addplot[red,thick] table[x index=0,y index=2] {\FEFTXtdata};
       \end{groupplot}
     \end{tikzpicture}
