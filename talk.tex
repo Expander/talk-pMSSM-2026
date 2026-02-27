@@ -115,6 +115,7 @@
 \usecolortheme{default}
 \beamertemplatenavigationsymbolsempty % keine Navigationselemente
 \setbeamersize{text margin left = 1cm, text margin right = 1cm}
+\usepackage{appendixnumberbeamer}
 
 % define footer
 \makeatletter
@@ -209,17 +210,6 @@
   \textcolor{darkgreen}{green}: required for N$^3$LO SQCD precision
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Uncertainty estimate of the fixed-order calculation}
-  Possible uncertainty estimates at $3\Loop$ precision:
-  \begin{align*}
-    \DMhQpole &= \max_{\Qpole\in[\MS/2,2\MS]}\left|M_h(\Qpole) - M_h(\MS)\right| \\
-    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
-    \DMhgsMSSM &= \left| M_h(g_3^{1\Loop}(M_Z)) - M_h(g_3^{2\Loop}(M_Z)) \right|
-  \end{align*}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Pure EFT calculation}
@@ -273,19 +263,6 @@
   \textcolor{darkgreen}{green}: required for N$^3$LO+N$^3$LL SQCD precision
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Uncertainty estimate of the EFT calculation}
-  Possible uncertainty estimates:
-  \begin{align*}
-    \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| \\
-    \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
-    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
-    \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right| \\
-    \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right|
-  \end{align*}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Hybrid calculation}
@@ -326,24 +303,30 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Uncertainty estimate of the hybrid calculation}
-  Possible uncertainty estimates at N$^3$LO+N$^3$LL:
-  \begin{align*}
-    \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
-    \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| \\
-    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
-    \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right|
-  \end{align*}
+\begin{frame}{}
+  \begin{center}
+    \bigskip
+    \bigskip
+
+    \Huge Thank you!
+
+    \bigskip
+    \bigskip
+
+    \includegraphics[width=5cm]{images/FS-logo.png}
+  \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
 
 \newcommand{\NUHMSSMNoFVHimalayaMSdata}{data/NUHMSSMNoFVHimalaya_MS-Mh-DMh_TB-20_xt--2.44949.dat}
 \newcommand{\NUHMSSMNoFVHimalayaXtdata}{data/NUHMSSMNoFVHimalaya_Xt-Mh-DMh_MS-3000_TB-20.dat}
 \newcommand{\HSSUSYMSdata}{data/HSSUSY_MS-Mh-DMh_TB-20_xt--2.44949.dat}
 \newcommand{\HSSUSYXtdata}{data/HSSUSY_Xt-Mh-DMh_MS-3000_TB-20.dat}
 
-\begin{frame}{Uncertainty estimate}
+\begin{frame}{Comparison of FO, EFT, Hybrid}
   \begin{center}
     \begin{tikzpicture}
       \begin{groupplot}[
@@ -389,7 +372,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Uncertainty estimate}
+\begin{frame}{Comparison of FO, EFT, Hybrid}
   \begin{center}
     \begin{tikzpicture}
       \begin{groupplot}[
@@ -431,6 +414,42 @@
       \end{groupplot}
     \end{tikzpicture}
   \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Uncertainty estimate of the fixed-order calculation}
+  Possible uncertainty estimates at $3\Loop$ precision:
+  \begin{align*}
+    \DMhQpole &= \max_{\Qpole\in[\MS/2,2\MS]}\left|M_h(\Qpole) - M_h(\MS)\right| \\
+    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
+    \DMhgsMSSM &= \left| M_h(g_3^{1\Loop}(M_Z)) - M_h(g_3^{2\Loop}(M_Z)) \right|
+  \end{align*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Uncertainty estimate of the EFT calculation}
+  Possible uncertainty estimates:
+  \begin{align*}
+    \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| \\
+    \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
+    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
+    \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right| \\
+    \DMhEFT &= \left| M_h - M_h(v^2/\MS^2) \right|
+  \end{align*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Uncertainty estimate of the hybrid calculation}
+  Possible uncertainty estimates at N$^3$LO+N$^3$LL:
+  \begin{align*}
+    \DMhQpole &= \max_{\Qpole\in[M_t/2,2M_t]}\left|M_h(\Qpole) - M_h(M_t)\right| \\
+    \DMhQmatch &= \max_{\Qmatch\in[\MS/2,2\MS]}\left|M_h(\Qmatch) - M_h(\MS)\right| \\
+    \DMhQlow &= \max_{\Qlow\in[M_Z/2,2M_Z]}\left|M_h(\Qlow) - M_h(M_Z)\right| \\
+    \DMhHSSUSYytSM &= \left| M_h(\hat{y}_t^{3\Loop}(M_Z)) - M_h(\hat{y}_t^{4\Loop}(M_Z)) \right|
+  \end{align*}
 \end{frame}
 
 \end{document}
