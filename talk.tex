@@ -279,13 +279,10 @@
   %
   \begin{align*}
     (M_h^2)_{\MSSM}
-    &= (M_h^2)_{\SM} \\
-    &= \hat{\lambda}(\Qmatch)\hat{v}^2(\Qmatch) + \Delta_{\SM}
-  \end{align*}
-  $\Rightarrow$
-  \begin{align*}
-    \hat{\lambda}(\Qmatch)
-    = \frac{(M_h^2)_{\MSSM} - \Delta_{\SM}}{\hat{v}^2(\Qmatch)}
+    &= (M_h^2)_{\SM}
+     = \hat{\lambda}(\Qmatch)\hat{v}^2(\Qmatch) + \Delta_{\SM} \\
+    \Rightarrow\qquad \hat{\lambda}(\Qmatch)
+    &= \frac{(M_h^2)_{\MSSM} - \Delta_{\SM}}{\hat{v}^2(\Qmatch)}
   \end{align*}
   %
   \emph{Important:} loop/coupling expansion on r.h.s.\ required to
@@ -293,11 +290,15 @@
 
   \bigskip
 
-  \emph{Precision:} N$^3$LO+N$^3$LL (same as pure EFT calculation), plus
+  \emph{Precision:} N$^3$LO+N$^3$LL (same as pure EFT calculation)
   \begin{itemize}
-  \item series of terms of $\ord(v^n/\MS^n)$ is included at $1\Loop$
-    and $2\Loop$ level at the respective orders
-  \item SQCD-enhanced terms of $x_t^n$ are resummed
+  \item includes terms of $\ord(v^n/\MS^n)$
+    due to pole mass matching
+    % at $1\Loop$ and $2\Loop$ % at the respective orders
+  \item resummation of subleading logs due to correct combination with
+    threshold corrections (no double counting)
+  \item resummation of QCD-enhanced terms of $\ord(x_t^n)$ due to
+    full-model parametrization
   \end{itemize}
 \end{frame}
 
